@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Houses from "./pages/Houses";
 import About from "./pages/About";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 import logo from "./images/logo.png"
 
 function App() {
@@ -20,9 +22,17 @@ function App() {
                     <Link className="navbar-item" to="/">Home</Link>
                     <Link className="navbar-item" to="/houses">Houses</Link>
                     <Link className="navbar-item" to="/about">About</Link>
+                    <Link className="navbar-item" to="/account">Account</Link>
                 </div>
                 <div className="navbar-end">
-                    <Link className="navbar-item" to="/account">Account</Link>
+                    <div className="buttons">
+                        <Link className="button is-primary" to="/signup">
+                            <strong>Sign up</strong>
+                        </Link>
+                        <Link className="button is-light" to="/login">
+                            Log in
+                        </Link>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -31,6 +41,8 @@ function App() {
             <Route path="/account" element={<Account />}/>
             <Route path="/houses" element={<Houses />}/>
             <Route path="/about" element={<About />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/signup" element={<SignUp />}/>
         </Routes>
         </>
     )
