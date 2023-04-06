@@ -12,7 +12,7 @@ function App() {
         <nav className="navbar is-primary">
             <div className="navbar-brand">
                 <a className="navbar-item">
-                    <img src={logo} alt="site logo" height="28px"/>
+                    <img src={logo} alt="site logo" />
                 </a>
             </div>
             <div className="navbar-menu">
@@ -20,6 +20,8 @@ function App() {
                     <Link className="navbar-item" to="/">Home</Link>
                     <Link className="navbar-item" to="/houses">Houses</Link>
                     <Link className="navbar-item" to="/about">About</Link>
+                </div>
+                <div className="navbar-end">
                     <Link className="navbar-item" to="/account">Account</Link>
                 </div>
             </div>
