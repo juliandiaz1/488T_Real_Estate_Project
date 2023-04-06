@@ -1,5 +1,5 @@
 function Houses() {
-    return <div>Houses</div>
+    return <div>Houses Page</div>
 }
 
 export default Houses;

@@ -1,22 +1,26 @@
-import Navigation from "./components/Navigation";
 import {Link, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Houses from "./pages/Houses";
+import About from "./pages/About";
+
 function App() {
 
     return (
         <>
-        <nav>
+        <nav class="navbar">
             <ul>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/account">Account</Link>
+                    <Link to="/houses">Houses</Link>
                 </li>
                 <li>
-                    <Link to="/houses">Houses</Link>
+                    <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/account">Account</Link>
                 </li>
             </ul>
         </nav>
@@ -24,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />}/>
             <Route path="/account" element={<Account />}/>
             <Route path="/houses" element={<Houses />}/>
+            <Route path="/about" element={<About />}/>
         </Routes>
         </>
     )
