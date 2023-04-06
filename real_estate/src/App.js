@@ -3,26 +3,38 @@ import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Houses from "./pages/Houses";
 import About from "./pages/About";
+import logo from "./images/logo.png"
 
 function App() {
 
     return (
         <>
-        <nav class="navbar">
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/houses">Houses</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/account">Account</Link>
-                </li>
-            </ul>
+        <nav className="navbar">
+            <div className="navbar-brand">
+                <a className="navbar-item">
+                    <img src={logo} alt="site logo"/>
+                </a>
+            </div>
+            <div className="navbar-menu">
+                <div className="navbar-start">
+                    <Link className="navbar-item" to="/">Home</Link>
+                </div>
+            </div>
+            <div className="navbar-menu">
+                <div className="navbar-start">
+                    <Link className="navbar-item" to="/houses">Houses</Link>
+                </div>
+            </div>
+            <div className="navbar-menu">
+                <div className="navbar-start">
+                    <Link className="navbar-item" to="/about">About</Link>
+                </div>
+            </div>
+            <div className="navbar-menu">
+                <div className="navbar-start">
+                    <Link className="navbar-item" to="/account">Account</Link>
+                </div>
+            </div>
         </nav>
         <Routes>
             <Route path="/" element={<Home />}/>
