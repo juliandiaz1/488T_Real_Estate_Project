@@ -5,7 +5,8 @@ import Houses from "./pages/Houses";
 import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import logo from "./images/logo.png"
+import logo from "./images/logo.png";
+
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/about" element={<About />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/signup" element={<SignUp />}/>
+            
         </Routes>
         </>
     )
