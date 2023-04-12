@@ -6,20 +6,21 @@ import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import logo from "./images/My_project.png";
+import './styles/Navbar.css';
 
 
 function App() {
 
     return (
         <>
-        <nav className="navbar is-primary">
+        <nav className="navbar is-transparent">
             <div className="navbar-brand">
                 <a className="navbar-item">
-                    <img src={logo} alt="site logo" />
+                    <img id="logo" src={logo} alt="site logo"/>
                 </a>
             </div>
-            <div className="navbar-menu" >
-                <div className="navbar-start">
+            <div className="navbar-menu is-spaced" >
+                <div className="navbar-end">
                     <Link className="navbar-item" to="/">Home</Link>
                     <Link className="navbar-item" to="/houses">Houses</Link>
                     <Link className="navbar-item" to="/about">About</Link>
@@ -27,7 +28,7 @@ function App() {
                 </div>
                 <div className="navbar-end">
                     <div className="buttons">
-                        <Link className="button is-primary" to="/signup">
+                        <Link className="button is-link" to="/signup">
                             <strong>Sign up</strong>
                         </Link>
                         <Link className="button is-light" to="/login">
