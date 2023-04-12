@@ -59,3 +59,12 @@
     background-color: rgb(243, 105, 144);
     transition: background-color 700ms ease-in-out;
 }
+
+.login-state{
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 30px;
+    color: red;
+    font-weight: 500;
+}
+
