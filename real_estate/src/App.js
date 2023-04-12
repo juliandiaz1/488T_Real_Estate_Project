@@ -5,7 +5,7 @@ import Houses from "./pages/Houses";
 import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import logo from "./images/490websitelogo.jpeg";
+import logo from "./images/My_project.png";
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
                     <img src={logo} alt="site logo" />
                 </a>
             </div>
-            <div className="navbar-menu">
+            <div className="navbar-menu" >
                 <div className="navbar-start">
                     <Link className="navbar-item" to="/">Home</Link>
                     <Link className="navbar-item" to="/houses">Houses</Link>
