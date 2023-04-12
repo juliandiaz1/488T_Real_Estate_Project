@@ -1,7 +1,12 @@
 .HousePic{
-    position: fixed;
+    /* position: fixed;
     margin-left: 1010px;
     margin-top: -67px;
     width: 900px;
+    height: auto; */
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 1000px;
     height: auto;
 }
