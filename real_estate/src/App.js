@@ -9,6 +9,7 @@ import logo from "./images/My_project.png";
 import './styles/Navbar.css';
 
 
+
 function App() {
 
     return (
@@ -16,7 +17,7 @@ function App() {
         <nav className="navbar is-transparent">
             <div className="navbar-brand">
                 <a className="navbar-item">
-                    <img id="logo" src={logo} alt="site logo"/>
+                    <img id="logo" src={logo} alt="site logo" height={"50px"}/>
                 </a>
             </div>
             <div className="navbar-menu is-spaced" >
