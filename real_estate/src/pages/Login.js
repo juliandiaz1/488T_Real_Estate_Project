@@ -15,9 +15,25 @@ function Login() {
             password: loginPassword
           },
           withCredentials: true,
-          url: 'http://localhost:3001/login'
-        }).then(res => {console.log(res)}).catch(err => {console.log(err)})
+          url: 'http://localhost:3001/login',
+          
+
+        }).then(res => {verifyLogin(res)}).catch(err => {console.log(err)});
        
+    }
+
+    const verifyLogin = (res) => {
+      
+      if(res['data'] === "User logged in"){
+        axios({
+          method: 'get',
+          withCredentials: true,
+          url: 'http://localhost:3001/getuser',
+
+        }).then(res => console.log(res));
+        window.location = "/";
+        
+      }
     }
 
     return(
