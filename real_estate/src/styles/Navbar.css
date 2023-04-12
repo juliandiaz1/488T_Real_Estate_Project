@@ -3,7 +3,7 @@
 }
 
 .navbar-item {
-    font-size: large;
+    font-size: x-large;
     padding: 2rem;
 }
 
@@ -13,4 +13,16 @@
 
 .navbar-item > img {
     max-height: unset !important;
+}
+
+.navbar-link > a {
+    padding: unset !important;
+}
+
+#homelink, #houseslink, #aboutlink, #accountlink {
+    padding: 2rem;
+}
+
+.buttons {
+    padding-right: 6rem;
 }
