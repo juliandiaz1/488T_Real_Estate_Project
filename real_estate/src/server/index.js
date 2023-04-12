@@ -46,6 +46,7 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/login', (req, res, next) => {
+  
     passport.authenticate('local', (err, user, info) => { 
       if (err) {console.log(err);}
       if (!user) {res.send("User not found");}
