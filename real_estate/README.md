@@ -1,16 +1,17 @@
 Dependecies to install:
 
-cd real_estate
-npm i -D react-router-dom@latest
-npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts
+## `cd real_estate`
+## `npm i -D react-router-dom@latest`
+## `npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts`
 
-## `To Run`
+To Run
 
-cd real_estate
+## `cd real_estate`
 ## `npm start`
 
 open a new terminal
-cd real_estate
+
+## `cd real_estate`
 ## `npm run server`
 
 
