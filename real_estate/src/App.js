@@ -5,7 +5,7 @@ import Houses from "./pages/Houses";
 import About from "./pages/About";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import logo from "./images/logo.png";
+import logo from "./images/490websitelogo.jpeg";
 
 
 function App() {
