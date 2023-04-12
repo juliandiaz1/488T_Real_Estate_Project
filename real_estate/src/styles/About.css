@@ -1,3 +1,6 @@
-.profile{
-    height: 128px;
+.img {
+    float: left !important;
+}
+.name {
+    float: right !important;
 }
