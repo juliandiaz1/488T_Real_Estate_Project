@@ -62,6 +62,15 @@ app.post('/login', (req, res, next) => {
   })
 
 
+app.get('/getuser', (req, res) => {
+  
+  res.cookie('user_id', req.user['id']);
+  res.cookie('user_name', req.user['username']).send("cookie sent");
+  // res.cookie('username', req.user['username']).send("cookie sent");
+  // console.log('Cookies: ', req.cookies);
+  
+});
+
 
 app.listen(3001, () =>{
     console.log("Server is running");
