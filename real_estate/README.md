@@ -1,3 +1,22 @@
+Dependecies to install:
+
+cd real_estate
+npm i -D react-router-dom@latest
+npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts
+
+## `To Run`
+
+cd real_estate
+## `npm start`
+
+open a new terminal
+cd real_estate
+## `npm run server`
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
