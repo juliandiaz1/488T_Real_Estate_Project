@@ -17,7 +17,7 @@ function App() {
         <nav className="navbar is-transparent">
             <div className="navbar-brand">
                 <a className="navbar-item">
-                    <img id="logo" src={logo} alt="site logo" height={"50px"}/>
+                    <img id="logo" src={logo} alt="site logo"/>
                 </a>
             </div>
             <div className="navbar-menu is-spaced" >

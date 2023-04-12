@@ -11,6 +11,6 @@
     height: 50px;
 }
 
-.navbar-item img {
-    max-height: unset;
+.navbar-item > img {
+    max-height: unset !important;
 }
