@@ -53,8 +53,8 @@ app.post('/login', (req, res, next) => {
       if (user) {
         req.login(user, (err) => {
           if (err) {console.log(err);}
-          res.send("User logged in");
-          console.log(user);
+          res.cookie('user_id', user['id']);
+          res.cookie('user_name', user['username']).send("User logged in");
         })
       }
       
@@ -67,8 +67,6 @@ app.get('/getuser', (req, res) => {
   
   res.cookie('user_id', req.user['id']);
   res.cookie('user_name', req.user['username']).send("cookie sent");
-  // res.cookie('username', req.user['username']).send("cookie sent");
-  // console.log('Cookies: ', req.cookies);
   
 });
 

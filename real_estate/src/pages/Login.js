@@ -25,12 +25,7 @@ function Login() {
     const verifyLogin = (res) => {
       console.log(res);
       if(res['data'] === "User logged in"){
-        axios({
-          method: 'get',
-          withCredentials: true,
-          url: 'http://localhost:3001/getuser',
-
-        }).then(res => console.log(res)).then(window.location = "/").catch(e => console.log(e));
+        window.location = "/";
         
       }
       else{
