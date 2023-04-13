@@ -9,18 +9,41 @@ function SignUp() {
     let message = "";
     
     const signup = () => {
-        axios({
-            method: "post",
-            data: {
-                username: registerUserName,
-                password: resgisterPassword
-            },
-            withCredentials: true,
-            url: 'http://localhost:3001/signup'
-        }).then((res) => verifyAndLogin(res)).catch((err) => console.log(err));
-    }
+        let constraintsPassed = false;
+        var state = document.querySelector('.login-state');
+        if(registerUserName.length > 3){
+            var passw=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+            if(resgisterPassword.match(passw)){
+                constraintsPassed = true;
+            }
+            message = "password does not meet the constraints required.<h3><br>*6-20 characters long <br>*Contains one numeric number<br>*One upper case <br>*One lower case</h3>";
+            state.style.position = "relative";
+            state.parentNode.style.height = "65%";
+            state.nextSibling.style.marginTop = "5%";
+            
+        }
+        else{
+            message = "user name is too short.";
+            
+        }
+        if(constraintsPassed){
+            axios({
+                method: "post",
+                data: {
+                    username: registerUserName,
+                    password: resgisterPassword
+                },
+                withCredentials: true,
+                url: 'http://localhost:3001/signup'
+            }).then((res) => verifyAndLogin(res)).catch((err) => console.log(err));
+        }
+        state.innerHTML = message;
+        
+
+}
 
     const verifyAndLogin = (res) => {
+        console.log(res);
         if(res['data'] === "User created"){
             axios({
                 method: 'post',
@@ -32,31 +55,29 @@ function SignUp() {
                 url: 'http://localhost:3001/login',
                 
     
-            }).then((res) => {verifyLogin(res)}).catch(err => {console.log(err)});
+            }).then((res) => {login(res)}).catch(err => {console.log(err)});
         }
-        else{
+        else if(res['data'] === "User already exists"){
             message = "User already exists. Try again.";
+            document.querySelector('.login-state').innerHTML = message;
+        }
+        else {
+            message = "Please fill in all forms.";
+            document.querySelector('.login-state').innerHTML = message;
         }
 }
 
-    const verifyLogin = (res) => {
-      
+    const login = (res) => {
+        console.log(res);
         if(res['data'] === "User logged in"){
-          axios({
-            method: 'get',
-            withCredentials: true,
-            url: 'http://localhost:3001/getuser',
-  
-          }).then(res => console.log(res));
           window.location = "/";
-          
         }
       }
 
     return(
          <div className="register-cntr">
-            <h1>{}</h1>
             <div className='register-card'>
+            <span className='login-state'></span>
                 <h1>SIGN UP</h1>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" onChange={e => setRegisterUsername(e.target.value)}></input>
