@@ -2,6 +2,7 @@ import "../styles/About.css";
 import Brandon from "../images/Brandon_website_pic.jpg";
 import Cason from "../images/Cason_website_pic.jpg";
 import Hannah from "../images/Hannah_website_pic.jpg";
+import Julian from "../images/Julian_website_pic.jpeg";
 function About() {
     return (
         <div>
@@ -36,8 +37,8 @@ function About() {
 
                 <div className="column is-3">
                     <figure className="image is-128x128">
-                        <img className="is-rounded" src={Hannah} alt="a picture of Hannah" />
-                        <div className="subtitle has-text-centered">Hannah Kosmicki</div>
+                        <img className="is-rounded" src={Julian} alt="a picture of Julian" />
+                        <div className="subtitle has-text-centered">Julian Diaz</div>
                     </figure>
                 </div>
             </div>
