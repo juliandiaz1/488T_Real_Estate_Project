@@ -18,7 +18,7 @@ function Login() {
           url: 'http://localhost:3001/login',
           
 
-        }).then(res => {verifyLogin(res)}).catch(err => {console.log(err)});
+        }).then(res => { verifyLogin(res)}).catch(err => {console.log(err)});
        
     }
 
