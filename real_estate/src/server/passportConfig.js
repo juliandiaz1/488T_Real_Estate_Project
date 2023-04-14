@@ -7,7 +7,7 @@ module.exports = function(passport) {
         new localStrategy((username, password, done) => {
             const query = "SELECT * FROM RealEstate.users where username = ?";
             db.query(query, [username] ,(err, rows) => {
-                if(err)throw err;  
+                if(err){throw err;}  
                 if(rows.length === 0) {
                     return done(null, false);
                 }

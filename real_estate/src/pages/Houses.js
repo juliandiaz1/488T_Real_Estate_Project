@@ -47,9 +47,9 @@ function Houses() {
         <>
             <div id="loader">
                 <div id="wave">
-                        <span class="dot" style={{background: "rgb(66, 227, 154)"}}></span>
-                        <span class="dot" style={{background: "rgb(8, 252, 244)"}}></span>
-                        <span class="dot" style={{background: "rgb(66, 227, 154)"}}></span>
+                        <span className="dot" style={{background: "rgb(66, 227, 154)"}}></span>
+                        <span className="dot" style={{background: "rgb(8, 252, 244)"}}></span>
+                        <span className="dot" style={{background: "rgb(66, 227, 154)"}}></span>
                 </div>
                 <div id="load-txt">Loading</div>
             </div>

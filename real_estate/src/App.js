@@ -51,12 +51,10 @@ function App() {
     }
 
     const handleSignUp = () => {
-        if(check_cookie()){
-            window.location = '/account';
-        }
-        else{
+        if(!check_cookie()){
             window.location = "/signup";
         }
+        
     }
 
     return (
