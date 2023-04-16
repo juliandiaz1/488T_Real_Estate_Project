@@ -20,6 +20,7 @@ def send_listings(data):
     requests.request("POST", url, json=data)
 
 
+
 api_key = "9bbecf83-5794-4607-ac3e-b682745614cd"
 
 

@@ -29,6 +29,7 @@ function Houses() {
     
 
    const display_listings = (listings) => {
+        
         var parent = document.querySelector('.house-cntr');
         var jData = listings['data'];
         for(var i = 0; i < listings['data'].length; i++){
