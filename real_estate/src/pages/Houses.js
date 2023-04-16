@@ -28,25 +28,6 @@ function Houses() {
     }
     
 
-   const display_listings = (listings) => {
-        
-        var parent = document.querySelector('.house-cntr');
-        var jData = listings['data'];
-        for(var i = 0; i < listings['data'].length; i++){
-            // parent.innerHTML += `<House src=${jData[i]['imgSrc']} city=${jData[i]['hdpData.homeInfo.city']} state=${jData[i]['hdpData.homeInfo.state']} zipcode=${jData[i]['hdpData.homeInfo.zipcode']} beds=${jData[i]['beds']}/>`;
-            parent.innerHTML += `<div class="house-card">
-                                <div class="content">
-                                 <img class="house-img" src=${jData[i]['imgSrc']}></img>
-                                 <p>Price: ${jData[i]['price']}</p>
-                                 <p>City: ${jData[i]['hdpData']['homeInfo']['city']}</p>
-                                 <p>State: ${jData[i]['hdpData']['homeInfo']['state']}</p>
-                                 <p>Zipcode: ${jData[i]['hdpData']['homeInfo']['zipcode']}</p>
-                                 <p>#Bedroom's: ${jData[i]['beds']}</p>
-                                 </div>
-                                 </div>`;
-        }
-    }
-
     useEffect(() => {
         loadPython();
     }, []);
