@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/Houses.css'
-
+import House from '../components/House'
 function Houses() {
 
+    const [ houses, getHouses ] = useState('');
    
     
    function loadPython(){
@@ -14,15 +15,17 @@ function Houses() {
     }
     
     const get_listing = async () => {
-        var ele = [];
-        ele = await axios({
+        await axios({
             method: 'GET',
             url: "http://localhost:3001/return_listings" 
-        }).then(res => {document.querySelector("#loader").style = "display: none;"; display_listings(res); return res;});
+        }).then(res => {
+            document.querySelector("#loader").style = "display: none;"; 
+            const houses = res.data;
+            getHouses(houses);
+        });
         
        
     }
-
     
 
    const display_listings = (listings) => {
@@ -43,6 +46,10 @@ function Houses() {
         }
     }
 
+    useEffect(() => {
+        loadPython();
+    }, []);
+
     return (
         <>
             <div id="loader">
@@ -53,8 +60,8 @@ function Houses() {
                 </div>
                 <div id="load-txt">Loading</div>
             </div>
-            <div className="house-cntr" onLoad={loadPython()}>
-                
+            <div className="house-cntr">
+                <House info={houses} />
             </div>
         </>
     )

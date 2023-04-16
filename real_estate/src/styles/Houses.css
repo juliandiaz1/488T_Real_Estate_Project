@@ -63,44 +63,12 @@ body{
 	100% {color: rgb(66, 227, 154);}
 	
 }
-
 .house-cntr {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    background-color: rgb(224, 224, 243);
-}
-
-.house-card {
-    
-    width: 350px;
-    height: 400px;
-    background-color: white;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.15);
-    
-}
-
-.content{
-    display: flex;
-    margin-top: 20px;
-    flex-direction: column;
-    margin-left: 7.5%;
-}
-
-.house-img{
-    width: 300px;
-    height: 200px;
-}
-
-.house-card, p{
-    display: inline-block;
-    font-weight: 550;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    margin-bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(224, 224, 243);
 }
 
 /*  Media   */
