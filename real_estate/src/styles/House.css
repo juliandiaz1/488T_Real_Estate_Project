@@ -1,0 +1,78 @@
+
+
+.house-card {
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.15);
+    
+}
+
+.content{
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+    margin-left: 7.5%;
+}
+
+.house-img{
+    width: 300px;
+    height: 200px;
+}
+
+.house-card, p{
+    display: inline-block;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.add-listing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 40px;
+    background-color: rgb(108, 117, 210);
+    border-style: none;
+    margin-top: 8%;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+#tick-mark {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    margin-left: 2px;
+}
+
+#tick-mark::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 3px;
+    background-color: #ffffff;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+#tick-mark::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #ffffff;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+}

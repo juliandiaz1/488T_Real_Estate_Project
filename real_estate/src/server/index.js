@@ -11,6 +11,8 @@ const spawn = require('child_process').spawn;
 
 const app = express();
 
+
+/************************** Use Statements***************************/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSession({ secret: "mySecretKey", resave: false, saveUninitialized: false }));
@@ -26,8 +28,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./passportConfig')(passport);
 
- let listings;
 
+let listings;
+
+/************************** POST Statements***************************/
 app.post('/signup', (req, res) => {
   
     const query = "INSERT INTO `RealEstate`.`users` (`username`, `password`) VALUES (?,?)";
@@ -123,12 +127,50 @@ app.post('/getinfo', (req, res) => {
   })
 })
 
-app.post('/listing_data', (req, res) => {
+app.post('/add_listing', (req, res) => {
+  let id = req.cookies['user_id'];
+  console.log(id);
+  const query = "INSERT INTO `RealEstate`.`listings` ( `id`, `zpid`, `price`, `city`, `state`, `zip`, `beds`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
+  const query3 = "SELECT * FROM RealEstate.listings where id = ? AND zpid = ?";
 
+  db.query(query2, [id], (err, rows) =>{
+
+    if(err){console.log(err)};
+    console.log("rows");
+    console.log(rows);
+    if(rows.length > 0){
+      
+      db.query(query3, [id, req.body.zpid], (err, rows) => {
+        if (err) {console.log(err);}
+        if(rows.length > 0){
+          res.send("Already added.");
+        }
+        else{
+          db.query(query, [id, req.body.zpid, req.body.price, req.body.city, req.body.state, req.body.zip_code, req.body.beds], (err, rows) => {
+            if (err) {console.log(err);}
+            res.send("Listing added!");
+          });
+        }
+        
+
+      });
+
+    }
+    else{
+      res.send("user not found!")
+    }
+  })
+
+});
+
+app.post('/listing_data', (req, res) => {
   listings = JSON.stringify(req.body);
   res.send("recieved data!");
+});
 
-})
+
+/************************** GET Statements***************************/
 
 app.get('/return_listings', (req, res) => {
   
@@ -155,6 +197,9 @@ app.get('/houses', (req, res) => {
     });
   
 });
+
+
+/************************** App listener ***************************/
 
 app.listen(3001, () =>{
     console.log("Server is running");

@@ -19,7 +19,10 @@ def send_listings(data):
     url = "http://localhost:3001/listing_data"
     requests.request("POST", url, json=data)
 
-api_key = "ea6b8801-ab04-4dbc-9645-de166dd8d9af"
+
+
+api_key = "9bbecf83-5794-4607-ac3e-b682745614cd"
+
 
 State = "Washington"
 
