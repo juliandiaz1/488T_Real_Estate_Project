@@ -6,6 +6,18 @@
     height: auto;
 }
 
+<<<<<<< Updated upstream
 .h1 {
     font-size: xx-large;
+=======
+#Title {
+    position: absolute;
+    font-size: 5rem;
+    width: 50rem;
+    left: 13rem;
+    bottom: 35rem;
+    font-style: italic;
+    font-weight: 500;
+    color: black;
+>>>>>>> Stashed changes
 }

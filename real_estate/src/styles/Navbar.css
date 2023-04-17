@@ -7,6 +7,11 @@
     padding: 2rem;
 }
 
+/* .nav-item {
+    font-size: x-large;
+    align-items: center;
+} */
+
 #logo {
     height: 50px;
 }
@@ -21,8 +26,70 @@
 
 #homelink, #houseslink, #aboutlink, #accountlink {
     padding: 2rem;
+    
 }
 
 .buttons {
     padding-right: 6rem;
 }
+
+
+
+#navlinks a {
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; 
+}
+
+#navlinks a:hover {
+    color: #fddb3a;
+}
+
+#navlinks .nav-dot {
+    position: absolute;
+    top: 100px;
+    width: 12px;
+    height: 12px;
+    background: #fddb3a;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#navlinks a:nth-child(1):hover ~ .nav-dot {
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+  
+#navlinks a:nth-child(2):hover ~ .nav-dot {
+    -webkit-transform: translateX(110px);
+    transform: translateX(110px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+  
+#navlinks a:nth-child(3):hover ~ .nav-dot {
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+  
+#navlinks a:nth-child(4):hover ~ .nav-dot {
+    -webkit-transform: translateX(285px);
+    transform: translateX(285px);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+  
+
+  /* the reason why the dot wont follow the links is because of the class used to create them. The navbar-item 
+  is messing with the position of the dot. I need to redo the .navbar-item to get the dot in the right place. */
