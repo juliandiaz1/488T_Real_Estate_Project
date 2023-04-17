@@ -6,7 +6,6 @@ import Julian from "../images/Julian_website_pic.jpeg";
 function About() {
     return (
         <div>
-            <h1>About Page</h1>
             <div className="container is-fluid">
                 <div className="notification">
                     The purpose of this project is to create a user-friendly website that customers can use to filter properties from the
@@ -14,32 +13,32 @@ function About() {
                 </div>
             </div>
             <div className="columns">
-                <div className="column is-3 ml-6">
-                    <figure className="image is-128x128">
-                        <img className="is-rounded" src={Brandon} alt="a picture of Brandon" />
+                <div className="column">
+                        <figure className="image">
+                        <img className="is-rounded" src={Brandon} alt="Brandon" />
+                        </figure>
                         <div className="subtitle has-text-centered">Brandon Soncarty</div>
-                    </figure>
                 </div>
 
-                <div className="column is-3">
-                    <figure className="image is-128x128">
-                        <img className="is-rounded" src={Cason} alt="a picture of Cason" />
+                <div className="column">
+                        <figure className="image">
+                        <img className="is-rounded" id="casonPic" src={Cason} alt="Cason" />
+                        </figure>
                         <div className="subtitle has-text-centered">Cason Nichols</div>
-                    </figure>
                 </div>
 
-                <div className="column is-3">
-                    <figure className="image is-128x128">
-                        <img className="is-rounded" src={Hannah} alt="a picture of Hannah" />
+                <div className="column">
+                        <figure className="image">
+                        <img className="is-rounded" src={Hannah} alt="Hannah" />
                         <div className="subtitle has-text-centered">Hannah Kosmicki</div>
-                    </figure>
+                        </figure>
                 </div>
 
-                <div className="column is-3">
-                    <figure className="image is-128x128">
-                        <img className="is-rounded" src={Julian} alt="a picture of Julian" />
+                <div className="column">
+                        <figure className="image">
+                        <img className="is-rounded" src={Julian} alt="Julian" />
                         <div className="subtitle has-text-centered">Julian Diaz</div>
-                    </figure>
+                        </figure>
                 </div>
             </div>
         </div>
