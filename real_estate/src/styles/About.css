@@ -1,6 +1,3 @@
-.img {
-    float: left !important;
-}
-.name {
-    float: right !important;
+#casonPic{
+    max-height: 50%;
 }
