@@ -1,5 +1,6 @@
 import HousePic from "../images/bernard-hermant-KqOLr8OiQLU-unsplash 1.png";
-import "../styles/Home.css"
+import "../styles/Home.css";
+
 
 function Home() {
     return(

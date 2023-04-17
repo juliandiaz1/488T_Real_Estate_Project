@@ -24,13 +24,16 @@ function House(props) {
             if(e.data === "Already added."){
                 alert("Already added listing.");
             }
-            else{
+            else if (e.data === "Listing added!"){
                 console.log(e.data);
                 document.getElementById("loader").css = "display: none;";
                 var child = val.target.childNodes[1];
                 val.target.innerText = e.data;
                 val.target.appendChild(child);
                 child.style = "display: inline-block";
+            }
+            else{
+                alert("Please Log in.");
             }
         })
     }
