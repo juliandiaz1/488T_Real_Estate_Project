@@ -129,7 +129,6 @@ app.post('/getinfo', (req, res) => {
 
 app.post('/add_listing', (req, res) => {
   let id = req.cookies['user_id'];
-  console.log(id);
   const query = "INSERT INTO `RealEstate`.`listings` ( `id`, `zpid`, `price`, `city`, `state`, `zip`, `beds`) VALUES (?, ?, ?, ?, ?, ?, ?)";
   const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
   const query3 = "SELECT * FROM RealEstate.listings where id = ? AND zpid = ?";
@@ -137,8 +136,6 @@ app.post('/add_listing', (req, res) => {
   db.query(query2, [id], (err, rows) =>{
 
     if(err){console.log(err)};
-    console.log("rows");
-    console.log(rows);
     if(rows.length > 0){
       
       db.query(query3, [id, req.body.zpid], (err, rows) => {
