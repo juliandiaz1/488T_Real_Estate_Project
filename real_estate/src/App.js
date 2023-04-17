@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import {Link, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
@@ -31,7 +32,7 @@ function App() {
         }
         return false;
     }
-    check_cookie();
+    
 
     const handleLoginLogout = () => {
         if(check_cookie()){
@@ -56,6 +57,10 @@ function App() {
         }
         
     }
+
+    useEffect(() => {
+        check_cookie();
+    }, []);
 
     return (
         <>
