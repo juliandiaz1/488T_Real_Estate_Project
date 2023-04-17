@@ -71,7 +71,7 @@ function App() {
                 </a>
             </div>
             <div className="navbar-menu is-spaced" >
-                <div className="navbar-end" >
+                <div className="navbar-end" id="navlinks">
                     <Link className="navbar-item" id="homelink" to="/">Home</Link>
                     <Link className="navbar-item" id="houseslink" to="/houses">Houses</Link>
                     <Link className="navbar-item" id="aboutlink" to="/about">About</Link>
