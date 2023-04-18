@@ -195,6 +195,21 @@ app.get('/houses', (req, res) => {
   
 });
 
+app.get('/get_account', (req, res) => {
+  let id = req.cookies['user_id'];
+  let query = "SELECT * FROM accounts where id=?";
+
+  db.query(query, [id], (err, rows) => {
+    if(err){console.log(e)}
+    if(rows.length <= 0){
+      res.send("user not found");
+    }
+    else{
+      res.send(rows);
+    }
+  })
+});
+
 
 /************************** App listener ***************************/
 
