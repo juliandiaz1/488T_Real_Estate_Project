@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/Houses.css'
 import House from '../components/House'
+import Loader from "../components/Loader";
 function Houses() {
 
     const [ houses, getHouses ] = useState('');
@@ -19,9 +20,9 @@ function Houses() {
             method: 'GET',
             url: "http://localhost:3001/return_listings" 
         }).then(res => {
-            document.querySelector("#loader").style = "display: none;"; 
             const houses = res.data;
             getHouses(houses);
+            document.querySelector("#loader").style = "display: none;"; 
         });
         
        
@@ -34,14 +35,7 @@ function Houses() {
 
     return (
         <>
-            <div id="loader">
-                <div id="wave">
-                        <span className="dot" style={{background: "rgb(66, 227, 154)"}}></span>
-                        <span className="dot" style={{background: "rgb(8, 252, 244)"}}></span>
-                        <span className="dot" style={{background: "rgb(66, 227, 154)"}}></span>
-                </div>
-                <div id="load-txt">Loading</div>
-            </div>
+            <Loader />
             <div className="house-cntr">
                 <House info={houses} />
             </div>

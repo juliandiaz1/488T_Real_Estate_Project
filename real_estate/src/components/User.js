@@ -13,25 +13,25 @@ function User(props){
                         <div className="field">
                         <label className="label">First Name</label>
                         <div className="control">
-                            <input className="input" type="name" placeholder={user.fname}></input>
+                            <input className="input" type="name" defaultValue={user.fname}></input>
                         </div>
                         </div>
                         <div className="field">
                         <label className="label">Last Name</label>
                         <div className="control">
-                            <input className="input" type="name" placeholder={user.lname}></input>
+                            <input className="input" type="name" defaultValue={user.lname}></input>
                         </div>
                         </div>
                         <div className="field">
                         <label className="label">Email</label>
                         <div className="control">
-                            <input className="input" type="email" placeholder={user.email}></input>
+                            <input className="input" type="email" defaultValue={user.email}></input>
                         </div>
                         </div>
                         <div className="field">
                         <label className="label">Phone Number</label>
                         <div className="control">
-                            <input className="input" type="name" placeholder={user.phone_number}></input>
+                            <input className="input" type="name" defaultValue={user.phone_number}></input>
                         </div>
                         </div>
                     </form>
@@ -43,6 +43,8 @@ function User(props){
         
         
     }
+
+    console.count();
 
     return(
         <>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import User from '../components/User';
 import '../styles/Account.css';
 import ProfilePic from '../images/user_profile_picture.jpeg';
+import Loader from "../components/Loader";
 
 function Account(){
 
@@ -15,17 +16,21 @@ function Account(){
             withCredentials: true,
         }).then(res => {
             const userinfo = res.data;
-            setUserInfo(userinfo)});
+            setUserInfo(userinfo);
+            document.getElementById("loader").style = "display: none;"});
     }
 
 
     useEffect(() => {
         display_info();
+        
     }, []);
     
 
     return (
         <div>
+            <Loader />
+            
              <div className="account-cntr">
                 <User info={userinfo} />
             </div>
