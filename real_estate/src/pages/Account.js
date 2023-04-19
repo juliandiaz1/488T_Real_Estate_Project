@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import User from '../components/User';
 import '../styles/Account.css';
+import ProfilePic from '../images/user_profile_picture.jpeg';
 
 function Account(){
 
@@ -29,7 +30,7 @@ function Account(){
             </div>
             <div>
        <form className="box" id="User-box">
-           <p>Random text</p>
+           <img className="is-rounded" id="default-pic" src={ProfilePic} alt="Profile Picture"></img>
        </form>
        </div>
         </div>
