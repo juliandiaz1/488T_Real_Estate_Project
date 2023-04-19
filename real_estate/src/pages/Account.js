@@ -12,6 +12,7 @@ function Account(){
         await axios({
             method: "get",
             url: "http://localhost:3001/get_account",
+            withCredentials: true,
         }).then(res => {
             const userinfo = res.data;
             setUserInfo(userinfo)});
@@ -21,6 +22,7 @@ function Account(){
     useEffect(() => {
         display_info();
     }, []);
+    
 
     return (
         <div>
