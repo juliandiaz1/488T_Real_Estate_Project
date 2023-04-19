@@ -22,14 +22,14 @@ function About() {
 
                 <div className="column">
                         <figure className="image">
-                        <img className="is-rounded" id="casonPic" src={Cason} alt="Cason" />
+                        <img className="is-rounded"  src={Cason} alt="Cason" />
                         </figure>
                         <div className="subtitle has-text-centered">Cason Nichols</div>
                 </div>
 
                 <div className="column">
                         <figure className="image">
-                        <img className="is-rounded" src={Hannah} alt="Hannah" />
+                        <img className="is-rounded"  src={Hannah} alt="Hannah" />
                         <div className="subtitle has-text-centered">Hannah Kosmicki</div>
                         </figure>
                 </div>
