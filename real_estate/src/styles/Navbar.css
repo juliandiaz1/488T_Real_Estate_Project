@@ -28,11 +28,10 @@
     padding-right: 6rem;
 }
 
-
-
 #navlinks a {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out; 
+    color: black;
 }
 
 #navlinks a:hover {
