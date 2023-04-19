@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import User from '../components/User';
+import '../styles/Account.css';
+
 function Account(){
 
     const [userinfo, setUserInfo] = useState('');
