@@ -12,10 +12,9 @@ function Account(){
         await axios({
             method: "get",
             url: "http://localhost:3001/get_account",
-            withCredentials: true,
         }).then(res => {
-            
-            setUserInfo(res)});
+            const userinfo = res.data;
+            setUserInfo(userinfo)});
     }
 
 

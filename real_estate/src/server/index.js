@@ -201,8 +201,8 @@ app.get('/get_account', (req, res) => {
 
   db.query(query, [id], (err, rows) => {
     if(err){console.log(e)}
-    if(rows.length <= 0){
-      res.send("user not found");
+    if(rows.length == 0){
+      console.log("packet not found");
     }
     else{
       res.send(rows);

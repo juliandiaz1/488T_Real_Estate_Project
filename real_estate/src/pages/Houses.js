@@ -21,7 +21,6 @@ function Houses() {
         }).then(res => {
             document.querySelector("#loader").style = "display: none;"; 
             const houses = res.data;
-            console.log(houses);
             getHouses(houses);
         });
         
