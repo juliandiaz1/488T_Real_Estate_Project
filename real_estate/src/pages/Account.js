@@ -36,7 +36,9 @@ function Account(){
             </div>
             <div>
        <form className="box" id="User-box">
-           <img className="is-rounded" id="default-pic" src={ProfilePic} alt="Profile Picture"></img>
+            <figure className="image" id="default-pic">
+           <img className="is-rounded" src={ProfilePic} alt="Profile Picture"></img>
+           </figure>
        </form>
        </div>
         </div>

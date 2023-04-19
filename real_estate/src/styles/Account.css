@@ -2,6 +2,12 @@
     width: 30rem;
     position: relative;
     left: 450px;
-    bottom: 387px;
+    bottom: 364px;
  }
- 
+
+ #default-pic {
+    width: 200px;
+    height: auto;
+    position: relative;
+    left: 110px;
+ }
