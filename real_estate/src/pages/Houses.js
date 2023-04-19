@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import '../styles/Houses.css'
-import House from '../components/House'
+import '../styles/Houses.css';
+import House from '../components/House';
 import Loader from "../components/Loader";
+import StatesList from "../components/StatesList";
 function Houses() {
 
     const [ houses, getHouses ] = useState('');
@@ -36,6 +37,7 @@ function Houses() {
     return (
         <>
             <Loader />
+            <StatesList />
             <div className="house-cntr">
                 <House info={houses} />
             </div>
