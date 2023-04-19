@@ -1,11 +1,21 @@
 import React from "react";
+import { useState } from "react";
 
 function StatesList(){
+
+    const [state, setState] = useState("Washington");
+
+    const myState = (event) => {
+        const value = event.target.value;
+        setState(value);
+        console.log(value);
+    }
+
     return(
-        <section class="hero">
-                <div class="hero-body">
-                    <div class="select is-medium">
-                        <select>
+        <section className="hero">
+                <div className="hero-body">
+                    <div className="select is-medium">
+                        <select id="states" onChange={myState}>
                             <option>State</option>
                             <option>Alabama</option>
                             <option>Alaska</option>
