@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../styles/User.css';
 
 
 function User(props){
@@ -13,12 +13,32 @@ function User(props){
                 Object.entries(users.data).map(([key, user]) => {
                     
                     return (
-                        <div key={key}>
-                            <h1>{user.fname}</h1>
-                            <h1>{user.lname}</h1>
-                            <h1>{user.email}</h1>
-                            <h1>{user.phone_number}</h1>
+                        <form key={key} className="box">
+                        <div className="field">
+                        <label className="label">First Name</label>
+                        <div class="control">
+                            <input class="input" type="name" placeholder={user.fname}></input>
                         </div>
+                        </div>
+                        <div className="field">
+                        <label className="label">Last Name</label>
+                        <div class="control">
+                            <input class="input" type="name" placeholder={user.lname}></input>
+                        </div>
+                        </div>
+                        <div className="field">
+                        <label className="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder={user.email}></input>
+                        </div>
+                        </div>
+                        <div className="field">
+                        <label className="label">Phone Number</label>
+                        <div class="control">
+                            <input class="input" type="name" placeholder={user.phone_number}></input>
+                        </div>
+                        </div>
+                    </form>
                     )
                 })
             )
