@@ -25,6 +25,11 @@ function Account(){
              <div className="account-cntr">
                 <User info={userinfo} />
             </div>
+            <div>
+       <form className="box" id="User-box">
+           <p>Random text</p>
+       </form>
+       </div>
         </div>
     )
 }
