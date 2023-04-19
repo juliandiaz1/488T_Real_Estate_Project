@@ -43,7 +43,7 @@ function House(props) {
         const filters = ['imgSrc', 'price', 'hdpData', 'beds'];
 
         const houses = props.info;
-
+        
         if(Object.keys(houses).length > 0){
             return(
                 Object.entries(houses).map(([key, val]) => {

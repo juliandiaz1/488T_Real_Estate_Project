@@ -206,7 +206,7 @@ app.get('/get_account', (req, res) => {
       res.send(rows[0]);
     }
     else{
-      res.send("no user found");
+      res.send("No user found");
     }
   })
 });
