@@ -64,7 +64,7 @@ function App() {
         <>
         <nav className="navbar is-transparent">
             <div className="navbar-brand">
-                <a className="navbar-item">
+                <a className="navbar-item" href="http://localhost:3000/">
                     <img id="logo" src={logo} alt="site logo"/>
                 </a>
             </div>
