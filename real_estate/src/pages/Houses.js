@@ -38,7 +38,7 @@ function Houses() {
         <>
             <Loader />
             <StatesList />
-            <div className="house-cntr">
+            <div className="house-cntr is-rounded">
                 <House info={houses} />
             </div>
         </>
