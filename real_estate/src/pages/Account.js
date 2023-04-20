@@ -35,13 +35,14 @@ function Account(){
                 <User info={userinfo} />
             </div>
             <div>
-       <form className="box" id="User-box">
-            <figure className="image" id="default-pic">
-           <img className="is-rounded" src={ProfilePic} alt="Profile Picture"></img>
-           </figure>
-       </form>
+                <form className="box" id="User-box">
+                    <figure className="image" id="default-pic">
+                        <img className="is-rounded" src={ProfilePic} alt="Profile Picture"></img>
+                        <button className="button is-fullwidth">Upload photo</button>
+                    </figure>
+                </form>
+            </div>
        </div>
-        </div>
     )
 }
 
