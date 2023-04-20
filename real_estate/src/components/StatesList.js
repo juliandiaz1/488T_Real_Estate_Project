@@ -28,7 +28,7 @@ function StatesList(){
                         <option>Florida</option>
                         <option>Georgia</option>
                         <option>Hawaii</option>
-                        <option>Idaha</option>
+                        <option>Idaho</option>
                         <option>Illinois</option>
                         <option>Indiana</option>
                         <option>Iowa</option>
