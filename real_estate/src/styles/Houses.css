@@ -7,3 +7,32 @@
   background-color: rgb(224, 224, 243);
 }
 
+.filter-options{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-submit{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    background-color: rgb(108, 117, 210);
+    border-style: none;
+    margin-top: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.slider{
+  display: flex !important;
+  width: 100%;
+}
+
+.slider > span {
+  align-self: center;
+  font-weight: 500;
+}
