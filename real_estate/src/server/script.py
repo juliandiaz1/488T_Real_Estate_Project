@@ -24,7 +24,7 @@ def send_listings(data):
 api_key = "3023a65e-97bc-4d9a-a0b2-d308b4852946"
 
 
-State = "Washington"
+State = sys.argv[1]
 
 if State == "Alabama":
     listing_url = "https://www.zillow.com/al/?searchQueryState=%7B%22usersSearchTerm%22%3A%22617%20Washintgon%20St%20Erwin%2C%20TN%2037650%22%2C%22mapBounds%22%3A%7B%22north%22%3A35.72637801711301%2C%22east%22%3A-82.89045329687498%2C%22south%22%3A29.379707333780196%2C%22west%22%3A-90.47101970312498%7D%2C%22isMapVisible%22%3Atrue%2C%22filterState%22%3A%7B%22sort%22%3A%7B%22value%22%3A%22globalrelevanceex%22%7D%2C%22ah%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%2C%22mapZoom%22%3A7%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A4%2C%22regionType%22%3A2%7D%5D%2C%22pagination%22%3A%7B%7D%7D"

@@ -175,8 +175,8 @@ app.get('/return_listings', (req, res) => {
   
 })
 
-app.get('/houses', (req, res) => {
-  const pythonProcess = spawn('python3', ['src/server/script.py']);
+app.post('/houses', (req, res) => {
+  const pythonProcess = spawn('python3', ['src/server/script.py', req.body.state]);
     var d = '';
     var e = '';
 

@@ -1,6 +1,8 @@
 import React from "react";
 import '../styles/House.css';
 import axios from "axios";
+
+
 function House(props) {
 
 
@@ -38,30 +40,39 @@ function House(props) {
         })
     }
 
+
     const displayHouses = (props) => {
 
-        const filters = ['imgSrc', 'price', 'hdpData', 'beds'];
+        
 
         const houses = props.info;
+        
+        
         
         if(Object.keys(houses).length > 0){
             return(
                 Object.entries(houses).map(([key, val]) => {
 
                     try{
-                        return (
-                            <div key={key} className="house-card">
-                                <div className="content">
-                                    <img className="house-img" src={val.imgSrc}></img>
-                                    <p>Price: {val.price}</p>
-                                    <p>City: {val.hdpData.homeInfo.city}</p>
-                                    <p>State: {val.hdpData.homeInfo.state}</p>
-                                    <p>Zip-Code: {val.hdpData.homeInfo.zipcode}</p>
-                                    <p>Bedrooms: {val.beds}</p>
-                                    <button className="add-listing" onClick={add_listing.bind(val)} value={key}>add listing<div id="tick-mark" style={{display: "none"}}></div></button>
+                        var price = Number(val.price.replace(/[$,]/g, ""));
+                        
+                        if((Number(props.filters.min) <= price && Number(props.filters.max) >= price) && props.filters.beds <= val.beds){
+                            
+                        
+                            return (
+                                <div key={key} className="house-card">
+                                    <div className="content">
+                                        <img className="house-img" src={val.imgSrc}></img>
+                                        <p>Price: {val.price}</p>
+                                        <p>City: {val.hdpData.homeInfo.city}</p>
+                                        <p>State: {val.hdpData.homeInfo.state}</p>
+                                        <p>Zip-Code: {val.hdpData.homeInfo.zipcode}</p>
+                                        <p>Bedrooms: {val.beds}</p>
+                                        <button className="add-listing" onClick={add_listing.bind(val)} value={key}>add listing<div id="tick-mark" style={{display: "none"}}></div></button>
+                                    </div>
                                 </div>
-                            </div>
-                        )
+                            )
+                        } // end of filter checker
                     }catch{
                         console.log("Error getting a house with zpid: ", val.zpid);
                     }

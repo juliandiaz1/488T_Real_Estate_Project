@@ -1,5 +1,7 @@
 
-
+#loader{
+    display: none;
+}
 .house-card {
     width: 350px;
     height: 500px;
@@ -16,6 +18,7 @@
     flex-direction: column;
     margin-left: 7.5%;
 }
+
 
 .house-img{
     width: 300px;
