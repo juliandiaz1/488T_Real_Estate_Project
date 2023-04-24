@@ -39,7 +39,7 @@ function App() {
             axios({
                 method: 'post',
                 withCredentials: true,
-                url: 'http://localhost:3001/logout',
+                url: 'http://localhost:3001/api/logout',
                 
       
               }).then(res => {document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });window.location = '/login'}).catch(err => {console.log(err)});
