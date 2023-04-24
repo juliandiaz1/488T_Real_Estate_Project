@@ -17,14 +17,14 @@ function Houses() {
             data: {
                 state: houseDatas.state,
             },
-            url: "http://localhost:3001/houses" 
+            url: "http://localhost:3001/api/houses" 
         }).then((e) => {get_listing()}).catch((err) => console.log(err));;
     }
     
     const get_listing = async () => {
         await axios({
             method: 'GET',
-            url: "http://localhost:3001/return_listings" 
+            url: "http://localhost:3001/api/return_listings" 
         }).then(res => {
             const houses = res.data;
             getHouses(houses);

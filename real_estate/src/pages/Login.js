@@ -15,7 +15,7 @@ function Login() {
             password: loginPassword
           },
           withCredentials: true,
-          url: 'http://localhost:3001/login',
+          url: 'http://localhost:3001/api/login',
           
 
         }).then(res => { verifyLogin(res)}).catch(err => {console.log(err)});

@@ -21,7 +21,7 @@ function House(props) {
                 beds: this.beds,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/add_listing',
+            url: 'http://localhost:3001/api/add_listing',
         }).then(e => {
             if(e.data === "Already added."){
                 alert("Already added listing.");

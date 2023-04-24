@@ -16,7 +16,7 @@ def get_listings(api_key, listing_url):
     return requests.request("GET", url, params=querystring)
 
 def send_listings(data):
-    url = "http://localhost:3001/listing_data"
+    url = "http://localhost:3001/api/listing_data"
     requests.request("POST", url, json=data)
 
 
