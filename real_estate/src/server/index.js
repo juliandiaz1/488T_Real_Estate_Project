@@ -6,6 +6,8 @@ const expressSession = require("express-session");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const db = require('./db');
+const multer = require('multer')
+const path = require('path');
 const spawn = require('child_process').spawn;
 
 
@@ -15,6 +17,7 @@ const app = express();
 /************************** Use Statements***************************/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("./public"))
 app.use(expressSession({ secret: "mySecretKey", resave: false, saveUninitialized: false }));
 
 app.use(cors({
@@ -27,6 +30,23 @@ app.use(cookieParser('mySecretKey'));
 app.use(passport.initialize());
 app.use(passport.session());
 require('./passportConfig')(passport);
+
+// Setting up multer middleware
+var storage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+      callBack(null, './public/images');     // './public/images/' directory name where save the file
+  },
+  filename: (req, file, callBack) => {
+
+      callBack(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+})
+
+var upload = multer({
+  storage: storage
+});
+
+
 
 
 let listings;
@@ -165,6 +185,27 @@ app.post('/listing_data', (req, res) => {
   listings = JSON.stringify(req.body);
   res.send("recieved data!");
 });
+
+
+//@type   POST
+//route for post data
+app.post("/api/images", upload.single('image'), (req, res) => {
+  if (!req.file) {
+      console.log("No file upload");
+  } else {
+    let id = req.cookies['user_id'];
+    console.log(req.file.filename)
+    var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
+    var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
+    db.query(insertData, [imgsrc, id], (err, result) => {
+        if (err) throw err
+        if(result.length > 0){
+          console.log("File uploaded.");
+        }
+    });
+  }
+});
+
 
 
 /************************** GET Statements***************************/
