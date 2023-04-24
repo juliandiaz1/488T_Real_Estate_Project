@@ -17,7 +17,7 @@ function Account(){
     const display_info = async () => {
         await axios({
             method: "get",
-            url: "http://localhost:3001/get_account",
+            url: "http://localhost:3001/api/get_account",
             withCredentials: true,
         }).then(res => {
             const userinfo = res.data;

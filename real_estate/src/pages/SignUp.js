@@ -34,7 +34,7 @@ function SignUp() {
                     password: resgisterPassword
                 },
                 withCredentials: true,
-                url: 'http://localhost:3001/signup'
+                url: 'http://localhost:3001/api/signup'
             }).then((res) => verifyAndLogin(res)).catch((err) => console.log(err));
         }
         state.innerHTML = message;
@@ -52,7 +52,7 @@ function SignUp() {
                 password: resgisterPassword
                 },
                 withCredentials: true,
-                url: 'http://localhost:3001/login',
+                url: 'http://localhost:3001/api/login',
                 
     
             }).then((res) => {login(res)}).catch(err => {console.log(err)});

@@ -62,7 +62,7 @@ function UserForm() {
                 phone_number: phoneNumber,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/userinfo'
+            url: 'http://localhost:3001/api/userinfo'
         }).then(res => {window.location = "/"});
     }
 

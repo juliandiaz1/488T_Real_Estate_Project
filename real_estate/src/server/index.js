@@ -52,7 +52,7 @@ var upload = multer({
 let listings;
 
 /************************** POST Statements***************************/
-app.post('/signup', (req, res) => {
+app.post('/api/signup', (req, res) => {
   
     const query = "INSERT INTO `RealEstate`.`users` (`username`, `password`) VALUES (?,?)";
     const query2 = "SELECT * FROM RealEstate.users where username = ?";
@@ -72,7 +72,7 @@ app.post('/signup', (req, res) => {
 
 
 
-app.post('/login', (req, res, next) => {
+app.post('/api/login', (req, res, next) => {
     
     passport.authenticate('local', (err, user, info) => { 
       if (err) {console.log(err);}
@@ -89,7 +89,7 @@ app.post('/login', (req, res, next) => {
      
   })
 
-  app.post('/logout', function(req, res, next) {
+  app.post('/api/logout', function(req, res, next) {
     req.session.destroy(function(err) {
       if (err) { return next(err); }
         res.clearCookie('connect.sid', {path:'/'});
@@ -101,7 +101,7 @@ app.post('/login', (req, res, next) => {
 
 
 
-app.post('/userinfo', (req, res) => {
+app.post('/api/userinfo', (req, res) => {
   let id = req.cookies['user_id'];
   const query = "INSERT INTO `RealEstate`.`accounts` ( `id`, `fname`, `lname`, `email`, `phone_number`) VALUES (?, ?, ?, ?, ?)";
   const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
@@ -131,7 +131,7 @@ app.post('/userinfo', (req, res) => {
  
 })
 
-app.post('/getinfo', (req, res) => {
+app.post('/api/getinfo', (req, res) => {
   const query = "SELECT * FROM RealEstate.accounts where id = ?";
   
   db.query(query, [req.body.id], (err, rows) => {
@@ -147,7 +147,7 @@ app.post('/getinfo', (req, res) => {
   })
 })
 
-app.post('/add_listing', (req, res) => {
+app.post('/api/add_listing', (req, res) => {
   let id = req.cookies['user_id'];
   const query = "INSERT INTO `RealEstate`.`listings` ( `id`, `zpid`, `price`, `city`, `state`, `zip`, `beds`) VALUES (?, ?, ?, ?, ?, ?, ?)";
   const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
@@ -181,7 +181,7 @@ app.post('/add_listing', (req, res) => {
 
 });
 
-app.post('/listing_data', (req, res) => {
+app.post('/api/listing_data', (req, res) => {
   listings = JSON.stringify(req.body);
   res.send("recieved data!");
 });
@@ -210,13 +210,13 @@ app.post("/api/images", upload.single('image'), (req, res) => {
 
 /************************** GET Statements***************************/
 
-app.get('/return_listings', (req, res) => {
+app.get('/api/return_listings', (req, res) => {
   
   res.send(listings);
   
 })
 
-app.post('/houses', (req, res) => {
+app.post('/api/houses', (req, res) => {
   const pythonProcess = spawn('python3', ['src/server/script.py', req.body.state]);
     var d = '';
     var e = '';
@@ -236,7 +236,7 @@ app.post('/houses', (req, res) => {
   
 });
 
-app.get('/get_account', (req, res) => {
+app.get('/api/get_account', (req, res) => {
   let id = req.cookies['user_id'];
   let query = "SELECT * FROM accounts where id= ?";
   db.query(query, [id], (err, rows) => {
