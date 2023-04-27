@@ -52,7 +52,7 @@ function Houses() {
                 state: state,
                 min: minPrice,
                 max: maxPrice,
-                beds: beds
+                beds: beds,
             }
            
             setHouseData(houseFilter);

@@ -4,6 +4,7 @@ import User from '../components/User';
 import '../styles/Account.css';
 import ProfilePic from '../images/user_profile_picture.jpeg';
 import Loader from "../components/Loader";
+import Listings from "../components/Listings";
 
 
 function Account(){
@@ -11,6 +12,8 @@ function Account(){
     const [userinfo, setUserInfo] = useState('');
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("");
+
+    const [ listing, setListing ] = useState('');
 
     const [profile, setProfile] = useState(ProfilePic);
     
@@ -32,11 +35,6 @@ function Account(){
             document.getElementById("loader").style = "display: none;"});
     }
 
-
-    useEffect(() => {
-        display_info();
-        
-    }, []);
 
     const saveFile = (e) => {
         setFile(e.target.files[0]);
@@ -66,6 +64,26 @@ function Account(){
         }
         
       }
+
+      
+
+      const get_saved_listings = async () => {
+        await axios({
+            method: 'get',
+            url: 'http://localhost:3001/api/saved_listings',
+            withCredentials: true
+            
+        }).then(res => setListing(res.data));
+
+      }
+
+      useEffect(() => {
+        display_info();
+        get_saved_listings();
+    }, []);
+
+      
+      
     
 
     return (
@@ -83,6 +101,10 @@ function Account(){
                         <button onClick={postPhoto} className="button is-fullwidth">Upload photo</button>
                     </figure>
                 </form>
+
+                <div className="saved-lsitings">
+                    <Listings listinginfo={listing}/>
+                </div>
             </div>
        </div>
     )
