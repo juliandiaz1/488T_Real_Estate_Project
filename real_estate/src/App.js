@@ -16,6 +16,7 @@ import axios from "axios";
 function App() {
     let signUpButton = "Sign Up";
     let loginButton = "Log in";
+    
     const check_cookie= () =>{
         let cookies = document.cookie;
         let cookieArr = cookies.split(";");
@@ -72,9 +73,9 @@ function App() {
                 <div className="navbar-end" id="navlinks">
                     
                     <Link className="navbar-item" id="homelink" to="/">Home</Link>
-                    <Link className="navbar-item" id="houseslink" to="/houses">Houses</Link>
+                    <Link className="navbar-item" id="houseslink" to={check_cookie() ? "/houses" : "/login"}>Houses</Link>
                     <Link className="navbar-item" id="aboutlink" to="/about">About</Link>
-                    <Link className="navbar-item" id="accountlink" to="/account">Account</Link>
+                    <Link className="navbar-item" id="accountlink" to={check_cookie() ? "/account" : "/login"}>Account</Link>
                     <div className="nav-dot"></div>
                     
                 </div>
@@ -93,7 +94,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/account" element={<Account />}/>
-            <Route path="/houses" element={<Houses />}/>
+            {<Route path="/houses" element={<Houses />}/>}
             <Route path="/about" element={<About />}/>
             <Route path="/signup" element={<SignUp />}/>
             <Route path="/login" element={<Login />}/>

@@ -11,3 +11,11 @@
     position: relative;
     left: 110px;
  }
+
+ .saved-listings{
+   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(224, 224, 243);
+ }

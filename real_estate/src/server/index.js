@@ -149,7 +149,7 @@ app.post('/api/getinfo', (req, res) => {
 
 app.post('/api/add_listing', (req, res) => {
   let id = req.cookies['user_id'];
-  const query = "INSERT INTO `RealEstate`.`listings` ( `id`, `zpid`, `price`, `city`, `state`, `zip`, `beds`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  const query = "INSERT INTO `RealEstate`.`listings` ( `id`, `zpid`, `price`, `city`, `state`, `zip`, `beds`, `imgSrc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
   const query3 = "SELECT * FROM RealEstate.listings where id = ? AND zpid = ?";
 
@@ -164,7 +164,7 @@ app.post('/api/add_listing', (req, res) => {
           res.send("Already added.");
         }
         else{
-          db.query(query, [id, req.body.zpid, req.body.price, req.body.city, req.body.state, req.body.zip_code, req.body.beds], (err, rows) => {
+          db.query(query, [id, req.body.zpid, req.body.price, req.body.city, req.body.state, req.body.zip_code, req.body.beds, req.body.imgSrc], (err, rows) => {
             if (err) {console.log(err);}
             res.send("Listing added!");
           });
@@ -205,6 +205,24 @@ app.post("/api/images", upload.single('image'), (req, res) => {
     });
   }
 });
+
+app.get('/api/saved_listings', (req, res) => {
+
+  let id = req.cookies['user_id'];
+  console.log(id);
+  var query = "SELECT * FROM `RealEstate`.`listings` where id = ?";
+
+  db.query(query, [id], (err, rows) => {
+    if(err){console.log(err)}
+    if(rows.length > 0){
+      res.send(rows);
+    }
+    else{
+      res.send("no user found.")
+    }
+  });
+
+})
 
 
 

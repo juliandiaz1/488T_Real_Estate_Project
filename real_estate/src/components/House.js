@@ -19,6 +19,7 @@ function House(props) {
                 state: this.hdpData.homeInfo.state,
                 zip_code: this.hdpData.homeInfo.zipcode,
                 beds: this.beds,
+                imgSrc: this.imgSrc,
             },
             withCredentials: true,
             url: 'http://localhost:3001/api/add_listing',
