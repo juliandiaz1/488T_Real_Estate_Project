@@ -102,7 +102,7 @@ function Account(){
                     </figure>
                 </form>
 
-                <div className="saved-lsitings">
+                <div className="saved-listings">
                     <Listings listinginfo={listing}/>
                 </div>
             </div>

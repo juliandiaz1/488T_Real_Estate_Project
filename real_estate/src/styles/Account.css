@@ -3,6 +3,7 @@
     position: relative;
     left: 450px;
     bottom: 364px;
+    
  }
 
  #default-pic {
@@ -17,5 +18,5 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  background-color: rgb(224, 224, 243);
+  background-image: linear-gradient(to bottom ,#fff, rgb(198, 194, 194));
  }
