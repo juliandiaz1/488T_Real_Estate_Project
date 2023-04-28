@@ -3,7 +3,7 @@ import Brandon from "../images/Brandon_website_pic.jpg";
 import Cason from "../images/Cason_website_pic.jpg";
 import Hannah from "../images/Hannah_website_pic.jpg";
 import Julian from "../images/Julian_website_pic.jpeg";
-function About() {
+export default function About() {
     return (
         <div>
             <section className="hero">
@@ -49,4 +49,3 @@ function About() {
 
 }
 
-export default About;

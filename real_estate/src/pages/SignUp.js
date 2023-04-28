@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import '../styles/Authentication.css';
 import axios from "axios";
 
-function SignUp() {
+const axiosInstance = axios.create({
+  
+    baseURL: "http://localhost:3001",
+    withCredentials: true,
+  
+  });
+
+export default function SignUp() {
 
     const [ registerUserName, setRegisterUsername ] = useState('');
     const [ resgisterPassword, setRegisterPassword ] = useState('');
     let message = "";
     
-    const signup = () => {
+    const signup = async() => {
         let constraintsPassed = false;
         var state = document.querySelector('.login-state');
         if(registerUserName.length > 3){
@@ -27,14 +34,11 @@ function SignUp() {
             
         }
         if(constraintsPassed){
-            axios({
-                method: "post",
-                data: {
-                    username: registerUserName,
-                    password: resgisterPassword
-                },
-                withCredentials: true,
-                url: 'http://localhost:3001/api/signup'
+            await axiosInstance.post('/api/signup', {
+                
+                username: registerUserName,
+                password: resgisterPassword
+                
             }).then((res) => verifyAndLogin(res)).catch((err) => console.log(err));
         }
         state.innerHTML = message;
@@ -42,17 +46,15 @@ function SignUp() {
 
 }
 
-    const verifyAndLogin = (res) => {
-        console.log(res);
+    const verifyAndLogin = async(res) => {
+        
         if(res['data'] === "User created"){
-            axios({
-                method: 'post',
-                data: {
+            await axiosInstance.post('/api/login', {
+                
+                
                 username: registerUserName,
                 password: resgisterPassword
-                },
-                withCredentials: true,
-                url: 'http://localhost:3001/api/login',
+                
                 
     
             }).then((res) => {login(res)}).catch(err => {console.log(err)});
@@ -84,10 +86,9 @@ function SignUp() {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" onChange={e => setRegisterPassword(e.target.value)}></input>
                 <button onClick={signup} className='btn'>SIGN UP</button>
-                <a className='redirect-user' onClick={() => window.location="/login"}>Already a user? Sign in.</a>
+                <a className='redirect-user' href="/login" onClick={() => window.location="/login"}>Already a user? Sign in.</a>
             </div>
          </div>
     );
 }
 
-export default SignUp;

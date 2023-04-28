@@ -3,26 +3,32 @@ import '../styles/House.css';
 import axios from "axios";
 
 
-function House(props) {
+export default function House(props) {
 
+
+    const axiosInstance = axios.create({
+        baseURL: "http://localhost:3001",
+        withCredentials: true
+      });
 
     async function add_listing(val){
         
         document.getElementById("loader").css = "display: block;";
 
-        await axios({
-            method: 'post',
-            data: {
-                zpid: this.zpid,
-                price: this.price,
-                city: this.hdpData.homeInfo.city,
-                state: this.hdpData.homeInfo.state,
-                zip_code: this.hdpData.homeInfo.zipcode,
-                beds: this.beds,
-                imgSrc: this.imgSrc,
-            },
-            withCredentials: true,
-            url: 'http://localhost:3001/api/add_listing',
+        await axiosInstance.post('/api/add_listing', {
+            
+            
+            zpid: this.zpid,
+            price: this.price,
+            city: this.hdpData.homeInfo.city,
+            state: this.hdpData.homeInfo.state,
+            zip_code: this.hdpData.homeInfo.zipcode,
+            beds: this.beds,
+            imgSrc: this.imgSrc,
+            
+            
+            
+            
         }).then(e => {
             if(e.data === "Already added."){
                 alert("Already added listing.");
@@ -77,15 +83,7 @@ function House(props) {
                     }catch{
                         console.log("Error getting a house with zpid: ", val.zpid);
                     }
-                    // try{
-                    //     console.log(val.hdpData.homeInfo.city);
-                    // }catch{
-                    //     console.log("info not avail");
-                    // }
-                    
-                    // if(key in filters){
-                    //     val.forEach(result => console.log(result));
-                    // }
+                   
                 })
             )
         }else{
@@ -104,4 +102,3 @@ function House(props) {
 
 }
 
-export default House;

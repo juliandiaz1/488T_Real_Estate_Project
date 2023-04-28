@@ -6,26 +6,26 @@ import ProfilePic from '../images/user_profile_picture.jpeg';
 import Loader from "../components/Loader";
 import Listings from "../components/Listings";
 
+const axiosInstance = axios.create({
+  
+    baseURL: "http://localhost:3001",
+    withCredentials: true,
+  
+  });
 
-function Account(){
+export default function Account(){
 
     const [userinfo, setUserInfo] = useState('');
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("");
-
     const [ listing, setListing ] = useState('');
-
     const [profile, setProfile] = useState(ProfilePic);
     
     const display_info = async () => {
-        await axios({
-            method: "get",
-            url: "http://localhost:3001/api/get_account",
-            withCredentials: true,
-        }).then(res => {
+        await axiosInstance.get('/api/get_account').then(res => {
             const userinfo = res.data;
             try{
-                if(res.data.imgSrc != undefined){
+                if(res.data.imgSrc !== undefined){
                     setProfile(userinfo.imgSrc);
                 }
             }catch{
@@ -47,17 +47,16 @@ function Account(){
         // Send the file and description to the server
         const formData = new FormData();
         formData.append("image", file);
+
         try{
             // const result = await axios.post("http://localhost:3001/api/images", formData, { headers: {'Content-Type': 'multipart/form-data'}});
-            await axios({
-                method: "post",
-                data: formData,
-                withCredentials: true,
+            await axiosInstance.post('/api/images', formData, {
+                
                 headers: {
                     'Content-Type' : 'multipart/form-data'
-                },
-                url: "http://localhost:3001/api/images"
-            })
+                }
+
+            }).then(window.location="/account");
             
         }catch{
 
@@ -68,12 +67,7 @@ function Account(){
       
 
       const get_saved_listings = async () => {
-        await axios({
-            method: 'get',
-            url: 'http://localhost:3001/api/saved_listings',
-            withCredentials: true
-            
-        }).then(res => setListing(res.data));
+        await axiosInstance.get('/api/saved_listings').then(res => setListing(res.data));
 
       }
 
@@ -110,4 +104,3 @@ function Account(){
     )
 }
 
-export default Account;

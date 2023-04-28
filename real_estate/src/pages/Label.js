@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Label.css'
 
-function Label({onChange, value, to, type}) {
+export default function Label({onChange, value, to, type}) {
   return (
     
     <div className='main-ctnr'>
@@ -12,4 +12,4 @@ function Label({onChange, value, to, type}) {
   )
 }
 
-export default Label;
+

@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import axios from "axios";
 import '../styles/Houses.css';
 import House from '../components/House';
 import Loader from "../components/Loader";
 import StatesList from "../components/StatesList";
 
-function Houses() {
+const axiosInstance = axios.create({
+  
+    baseURL: "http://localhost:3001",
+    withCredentials: true,
+  
+});
+
+export default function Houses() {
 
     const [ houses, getHouses ] = useState('');
     const [houseData, setHouseData ] = useState('');
     
-   function loadPython(houseDatas){
-    console.log(houseDatas);
-        axios({
-            method: 'POST',
-            data: {
-                state: houseDatas.state,
-            },
-            url: "http://localhost:3001/api/houses" 
+   const loadPython = async(houseDatas) => {
+    
+        await axiosInstance.post('/api/houses', {
+            
+            state: houseDatas.state,
+            
         }).then((e) => {get_listing()}).catch((err) => console.log(err));;
     }
     
     const get_listing = async () => {
-        await axios({
-            method: 'GET',
-            url: "http://localhost:3001/api/return_listings" 
-        }).then(res => {
+        await axiosInstance.get('/api/return_listings').then(res => {
             const houses = res.data;
             getHouses(houses);
             document.querySelector("#loader").style = "display: none;"; 
@@ -129,5 +131,3 @@ function Houses() {
     
     
 }
-
-export default Houses;

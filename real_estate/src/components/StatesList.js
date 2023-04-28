@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function StatesList(){
+export default function StatesList(){
 
     const [state, setState] = useState("Washington");
 
@@ -73,4 +73,3 @@ function StatesList(){
         </section>
     )
 }
-export default StatesList;

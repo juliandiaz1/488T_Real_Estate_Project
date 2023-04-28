@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/User.css';
 
 
-function User(props){
+export default function User(props){
 
     const display_user = (props) => {
         let user = props.info;
@@ -53,4 +53,3 @@ function User(props){
     )
 }
 
-export default User;

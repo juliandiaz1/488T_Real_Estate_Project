@@ -2,7 +2,7 @@ import HousePic from "../images/bernard-hermant-KqOLr8OiQLU-unsplash 1.png";
 import "../styles/Home.css";
 
 
-function Home() {
+export default function Home() {
     return(
         <div>
             <h1 id="Title"> Invest in Long Term Rental Properties</h1>
@@ -15,4 +15,3 @@ function Home() {
 }
 
 
-export default Home;
