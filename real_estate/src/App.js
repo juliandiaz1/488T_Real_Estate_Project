@@ -82,7 +82,7 @@ function App() {
                 <div className="navbar-end">
                     <div className="buttons">
                         <Link className="button is-link" onClick={handleSignUp}>
-                            <strong>{"Hello, " + userName}</strong>
+                            <strong>{loginStatus ? "Hello, " + userName : "Sign up"}</strong>
                         </Link>
                         <Link className="button is-light" onClick={handleLoginLogout}>
                             {loginStatus ? "Log out": "Log in"}
