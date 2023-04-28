@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
@@ -14,8 +14,10 @@ import axios from "axios";
 
 
 function App() {
-    let signUpButton = "Sign Up";
-    let loginButton = "Log in";
+    
+
+    const [ loginStatus, setLoginStatus ] = useState(false);
+    const [ userName, setUserName ] = useState("Guest");
     
     const check_cookie= () =>{
         let cookies = document.cookie;
@@ -23,20 +25,15 @@ function App() {
         for(var i = 0; i < cookieArr.length; ++i){
             var temp = cookieArr[i].split("=");
             if(temp[0] === " user_name" && temp[1].length > 0){
-                signUpButton = "Hello, " + temp[1];
-                loginButton = "Logout";
-                cookieArr = "";
-                cookies = "";
-                return true;
-                
+                setLoginStatus(true);
+                setUserName(temp[1]); 
             }
         }
-        return false;
     }
     
 
     const handleLoginLogout = () => {
-        if(check_cookie()){
+        if(loginStatus){
             axios({
                 method: 'post',
                 withCredentials: true,
@@ -53,13 +50,16 @@ function App() {
     }
 
     const handleSignUp = () => {
-        if(!check_cookie()){
+        if(!loginStatus){
             window.location = "/signup";
         }
         
+        
     }
 
-    check_cookie();
+    useEffect(() => {
+        check_cookie();
+    }, []);
 
     return (
         <>
@@ -73,19 +73,19 @@ function App() {
                 <div className="navbar-end" id="navlinks">
                     
                     <Link className="navbar-item" id="homelink" to="/">Home</Link>
-                    <Link className="navbar-item" id="houseslink" to={check_cookie() ? "/houses" : "/login"}>Houses</Link>
+                    <Link className="navbar-item" id="houseslink" to={loginStatus ? "/houses" : "/login"}>Houses</Link>
                     <Link className="navbar-item" id="aboutlink" to="/about">About</Link>
-                    <Link className="navbar-item" id="accountlink" to={check_cookie() ? "/account" : "/login"}>Account</Link>
+                    <Link className="navbar-item" id="accountlink" to={loginStatus ? "/account" : "/login"}>Account</Link>
                     <div className="nav-dot"></div>
                     
                 </div>
                 <div className="navbar-end">
                     <div className="buttons">
                         <Link className="button is-link" onClick={handleSignUp}>
-                            <strong>{signUpButton}</strong>
+                            <strong>{"Hello, " + userName}</strong>
                         </Link>
                         <Link className="button is-light" onClick={handleLoginLogout}>
-                            {loginButton}
+                            {loginStatus ? "Log out": "Log in"}
                         </Link>
                     </div>
                 </div>

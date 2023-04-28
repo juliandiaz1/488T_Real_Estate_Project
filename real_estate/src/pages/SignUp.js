@@ -84,6 +84,7 @@ function SignUp() {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" onChange={e => setRegisterPassword(e.target.value)}></input>
                 <button onClick={signup} className='btn'>SIGN UP</button>
+                <a className='redirect-user' onClick={() => window.location="/login"}>Already a user? Sign in.</a>
             </div>
          </div>
     );

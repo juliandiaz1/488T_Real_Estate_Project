@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/Authentication.css';
 import axios from 'axios';
+
 
 function Login() {
 
@@ -33,6 +34,9 @@ function Login() {
       }
     }
 
+    
+    
+
     return(
          <div className="register-cntr">
             <div className='register-card'>
@@ -43,6 +47,7 @@ function Login() {
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" onChange={e => setLoginPassword(e.target.value)} required></input>
                 <button onClick={login} className='btn'> LOGIN</button>
+                <a className='redirect-user' onClick={() => window.location="/signup"}>Not already a user? Sign up here.</a>
             </div>
          </div>
     );

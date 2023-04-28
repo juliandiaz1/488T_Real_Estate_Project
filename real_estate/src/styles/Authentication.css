@@ -68,3 +68,12 @@
     font-weight: 500;
 }
 
+.redirect-user {
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 400;
+    padding: 10px;
+    color: rgb(171, 170, 170);
+}
+
