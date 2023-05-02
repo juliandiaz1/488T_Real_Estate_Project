@@ -12,7 +12,7 @@ export default function User(props){
                     <form className="box">
                         <nav className="navbaruser is-transparent">
                             <div className="navbar-start">
-                            <a className="navbar-item">User Information</a>
+                            <label className="navbar-item">User Information</label>
                             <a className="navbar-item">Saved Listings</a>
                             </div>
                         </nav>
