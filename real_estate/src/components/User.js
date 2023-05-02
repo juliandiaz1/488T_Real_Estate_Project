@@ -10,6 +10,12 @@ export default function User(props){
             if(Object.keys(user).length > 0){
                 return (
                     <form className="box">
+                        <nav className="navbaruser is-transparent">
+                            <div className="navbar-start">
+                            <a className="navbar-item">User Information</a>
+                            <a className="navbar-item">Saved Listings</a>
+                            </div>
+                        </nav>
                         <div className="field">
                         <label className="label">First Name</label>
                         <div className="control">
