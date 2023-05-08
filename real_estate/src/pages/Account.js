@@ -5,6 +5,8 @@ import '../styles/Account.css';
 import ProfilePic from '../images/user_profile_picture.jpeg';
 import Loader from "../components/Loader";
 import Listings from "../components/Listings";
+import {Link, Route, Routes} from "react-router-dom";
+import SavedListing from "./SavedListing";
 
 const axiosInstance = axios.create({
   
@@ -83,9 +85,16 @@ export default function Account(){
     return (
         <div>
             <Loader />
-            
+    
              <div className="account-cntr">
-                <User info={userinfo} />
+             {/* <Routes>
+                <Route path="/account/" element={<User info={userinfo} />}>
+                    <Route path="SavedListing" element={<SavedListing />} ></Route>
+                </Route>
+                
+            </Routes> */}
+            <User info={userinfo} />
+                
             </div>
             <div>
                 <form className="box" id="User-box">
@@ -100,6 +109,7 @@ export default function Account(){
                     <Listings listinginfo={listing}/>
                 </div>
             </div>
+            
        </div>
     )
 }
