@@ -1,5 +1,7 @@
 import React from "react";
 import '../styles/User.css';
+import {Link, Route, Routes} from "react-router-dom";
+import SavedListing from "../pages/SavedListing";
 
 
 export default function User(props){
@@ -13,7 +15,7 @@ export default function User(props){
                         <nav className="navbaruser is-transparent">
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>
-                            <a className="navbar-item">Saved Listings</a>
+                                <Link className="navbar-item" to={"/account/SavedListing"}>Saved Listings</Link>
                             </div>
                         </nav>
                         <div className="field">
@@ -54,6 +56,9 @@ export default function User(props){
 
     return(
         <>
+            <Routes>
+                <Route path="/SavedListing" element={<SavedListing />}></Route>
+            </Routes>
             {display_user(props)}
         </>
     )

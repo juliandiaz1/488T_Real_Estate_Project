@@ -10,6 +10,8 @@ import logo from "./images/My_project.png";
 import './styles/Navbar.css';
 import UserForm from "./pages/UserForm";
 import axios from "axios";
+import SavedListing from "./pages/SavedListing";
+import User from "./components/User";
 
 
 
@@ -93,13 +95,15 @@ function App() {
         </nav>
         <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/account" element={<Account />}/>
-            {<Route path="/houses" element={<Houses />}/>}
+            
+            <Route path="account/*" element={<Account />}>
+                <Route path="account/SavedListing" element={<SavedListing />} />
+            </Route>
+            <Route path="/houses" element={<Houses />}/>
             <Route path="/about" element={<About />}/>
             <Route path="/signup" element={<SignUp />}/>
             <Route path="/login" element={<Login />}/>
-            <Route path="/userform" element={<UserForm />} />
-            
+            <Route path="/userform" element={<UserForm />}/>
         </Routes>
         </>
     )
