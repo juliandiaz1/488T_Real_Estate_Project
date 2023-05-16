@@ -13,9 +13,15 @@ import axios from "axios";
 import SavedListing from "./pages/SavedListing";
 import User from "./components/User";
 
+const axiosInstance = axios.create({
+  
+    baseURL: process.env.REACT_APP_AXIOS_URL,
+    withCredentials: true,
+  
+  });
+  
 
-
-function App() {
+export default function App() {
     
 
     const [ loginStatus, setLoginStatus ] = useState(false);
@@ -36,13 +42,9 @@ function App() {
 
     const handleLoginLogout = () => {
         if(loginStatus){
-            axios({
-                method: 'post',
-                withCredentials: true,
-                url: 'http://localhost:3001/api/logout',
-                
-      
-              }).then(res => {document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });window.location = '/login'}).catch(err => {console.log(err)});
+            axiosInstance.post('/api/logout', {
+
+            }).then(res => {document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });window.location = '/login'}).catch(err => {console.log(err)});
         }
         else{
             window.location = "/login";
@@ -67,7 +69,7 @@ function App() {
         <>
         <nav className="navbar is-transparent">
             <div className="navbar-brand">
-                <a className="navbar-item" href="http://localhost:3000/">
+                <a className="navbar-item" href={process.env.REACT_APP_BASE_URL}>
                     <img id="logo" src={logo} alt="site logo"/>
                 </a>
             </div>
@@ -109,4 +111,3 @@ function App() {
     )
 }
 
-export default App;

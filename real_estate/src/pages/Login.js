@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import '../styles/Authentication.css';
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-  
-  baseURL: "http://localhost:3001",
-  withCredentials: true,
 
-});
 
 export default function Login() {
 
     const [ loginUserName, setLoginUsername ] = useState('');
     const [ loginPassword, setLoginPassword ] = useState('');
 
+    const axiosInstance = axios.create({
+  
+      baseURL: process.env.REACT_APP_AXIOS_URL,
+      withCredentials: true,
+    
+    });
+    
+    
+    
     const login = async() => {
         await axiosInstance.post('/api/login', {
             

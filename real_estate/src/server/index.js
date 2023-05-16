@@ -9,8 +9,7 @@ const db = require('./db');
 const multer = require('multer')
 const path = require('path');
 const spawn = require('child_process').spawn;
-
-
+require('dotenv').config()
 const app = express();
 
 
@@ -21,9 +20,10 @@ app.use(express.static("./public"))
 app.use(expressSession({ secret: "mySecretKey", resave: false, saveUninitialized: false }));
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: process.env.REACT_APP_BASE_URL,
     credentials: true,
 }));
+
 
 app.use(cookieParser('mySecretKey'));
 
@@ -90,6 +90,7 @@ app.post('/api/login', (req, res, next) => {
   })
 
   app.post('/api/logout', function(req, res, next) {
+    
     req.session.destroy(function(err) {
       if (err) { return next(err); }
         res.clearCookie('connect.sid', {path:'/'});
@@ -187,14 +188,11 @@ app.post('/api/listing_data', (req, res) => {
 });
 
 
-//@type   POST
-//route for post data
 app.post("/api/images", upload.single('image'), (req, res) => {
   if (!req.file) {
       console.log("No file upload");
   } else {
     let id = req.cookies['user_id'];
-    console.log(req.file.filename)
     var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
@@ -209,7 +207,7 @@ app.post("/api/images", upload.single('image'), (req, res) => {
 app.get('/api/saved_listings', (req, res) => {
 
   let id = req.cookies['user_id'];
-  console.log(id);
+  
   var query = "SELECT * FROM `RealEstate`.`listings` where id = ?";
 
   db.query(query, [id], (err, rows) => {

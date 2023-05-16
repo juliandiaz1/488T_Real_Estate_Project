@@ -1,9 +1,11 @@
-import pandas as pd
-import numpy as np
-import plotly.express as px
+import os
 import requests
 import sys
-import json as js
+from dotenv import load_dotenv
+
+load_dotenv()
+
+REACT_APP_AXIOS_URL = os.getenv('REACT_APP_AXIOS_URL')
 
 def get_listings(api_key, listing_url):
     url = "https://app.scrapeak.com/v1/scrapers/zillow/listing"
@@ -16,7 +18,7 @@ def get_listings(api_key, listing_url):
     return requests.request("GET", url, params=querystring)
 
 def send_listings(data):
-    url = "http://localhost:3001/api/listing_data"
+    url = REACT_APP_AXIOS_URL + "/api/listing_data"
     requests.request("POST", url, json=data)
 
 

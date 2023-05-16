@@ -10,7 +10,7 @@ import SavedListing from "./SavedListing";
 
 const axiosInstance = axios.create({
   
-    baseURL: "http://localhost:3001",
+    baseURL: process.env.REACT_APP_AXIOS_URL,
     withCredentials: true,
   
   });
@@ -51,7 +51,7 @@ export default function Account(){
         formData.append("image", file);
 
         try{
-            // const result = await axios.post("http://localhost:3001/api/images", formData, { headers: {'Content-Type': 'multipart/form-data'}});
+            // const result = await axios.post("process.env.REACT_APP_AXIOS_URL/api/images", formData, { headers: {'Content-Type': 'multipart/form-data'}});
             await axiosInstance.post('/api/images', formData, {
                 
                 headers: {
