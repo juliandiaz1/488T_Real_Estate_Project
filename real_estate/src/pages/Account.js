@@ -4,10 +4,6 @@ import User from '../components/User';
 import '../styles/Account.css';
 import ProfilePic from '../images/user_profile_picture.jpeg';
 import Loader from "../components/Loader";
-import Listings from "../components/Listings";
-import {Link, Route, Routes} from "react-router-dom";
-import SavedListing from "./SavedListing";
-
 const axiosInstance = axios.create({
   
     baseURL: process.env.REACT_APP_AXIOS_URL,
@@ -65,17 +61,10 @@ export default function Account(){
         }
         
       }
-
       
-
-      const get_saved_listings = async () => {
-        await axiosInstance.get('/api/saved_listings').then(res => setListing(res.data));
-
-      }
 
       useEffect(() => {
         display_info();
-        get_saved_listings();
     }, []);
 
       
@@ -87,12 +76,7 @@ export default function Account(){
             <Loader />
     
              <div className="account-cntr">
-             {/* <Routes>
-                <Route path="/account/" element={<User info={userinfo} />}>
-                    <Route path="SavedListing" element={<SavedListing />} ></Route>
-                </Route>
-                
-            </Routes> */}
+             
             <User info={userinfo} />
                 
             </div>
@@ -105,9 +89,6 @@ export default function Account(){
                     </figure>
                 </form>
 
-                <div className="saved-listings">
-                    <Listings listinginfo={listing}/>
-                </div>
             </div>
             
        </div>
