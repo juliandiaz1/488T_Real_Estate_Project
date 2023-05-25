@@ -182,6 +182,31 @@ app.post('/api/add_listing', (req, res) => {
 
 });
 
+//THIS IS FOR THE DELETE
+app.post('/api/delete_listing', (req, res) => {
+  let id = req.cookies['user_id'];
+  const query = "DELETE FROM `RealEstate`.`listings` where id = ? AND zpid = ?";
+  const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
+
+  db.query(query2, [id], (err, rows) =>{
+
+    if(err){console.log(err)};
+    if(rows.length > 0){
+      db.query(query, [id, req.body.zpid], (err, rows) => {
+        if (rows.length > 0){
+          res.send("Deleted");
+        }
+      });
+
+    }
+    else{
+      res.send("user not found!")
+    }
+  })
+
+});
+
+
 app.post('/api/listing_data', (req, res) => {
   listings = JSON.stringify(req.body);
   res.send("recieved data!");
