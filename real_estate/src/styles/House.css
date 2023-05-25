@@ -80,3 +80,8 @@
     transform: translateX(10px) rotate(-45deg);
     transform-origin: left bottom;
 }
+
+.delete {
+    position: relative;
+    left: 20.5rem;
+}
