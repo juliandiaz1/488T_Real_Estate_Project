@@ -196,7 +196,7 @@ app.post("/api/images", upload.single('image'), (req, res) => {
     var imgsrc = process.env.REACT_APP_AXIOS_URL + '/images/' + req.file.filename
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
-        if (err) throw err
+        if (err){throw err}
         if(result.length > 0){
           console.log("File uploaded!");
           res.send("Picture was uploaded!");
@@ -205,25 +205,30 @@ app.post("/api/images", upload.single('image'), (req, res) => {
   }
 });
 
-app.post("/api/graphs", (req, res) => {
-  let username = req.cookies['user_name'];
-  const pythonProcess = spawn('python3', ['src/server/graph.py', req.body.state, req.body.min, req.body.max, req.body.beds]);
-    var d = '';
-    var e = '';
+app.post('/api/updateUserInfo', (req, res) => {
+  
+  let id = req.cookies['user_id'];
+  const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
+  const query3 = "UPDATE `RealEstate`.`accounts` SET fname = ?, lname = ?, email = ?, phone_number = ? WHERE id = ?";
 
-    pythonProcess.stdout.on('data', data => {
-      d += data;
-    });
+  db.query(query2, [id], (err, rows) =>{
 
-    pythonProcess.stderr.on('data', data => {
-      e += data;
-    });
+    if(err){console.log(err)};
 
-    pythonProcess.on('close', code => {
-    res.json({ data: d, error: e });
-      
-    });
+    if(rows.length > 0){
+
+      db.query(query3, [req.body.fname, req.body.lname, req.body.email, req.body.phone, id], (err, rows) => {
+        if (err) {console.log(err);}
+        res.send("Updated account info");
+      });
+
+    }
+
+  })
+
 })
+
+
 
 
 
