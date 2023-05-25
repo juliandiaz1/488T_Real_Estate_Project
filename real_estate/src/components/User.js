@@ -16,6 +16,7 @@ export default function User(props){
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>
                                 <Link className="navbar-item" to={"/account/SavedListing"}>Saved Listings</Link>
+                                <Link className="navbar-item">ROI Information</Link>
                             </div>
                         </nav>
                         <div className="field">
@@ -41,6 +42,7 @@ export default function User(props){
                         <div className="control">
                             <input className="input" type="name" defaultValue={user.phone_number}></input>
                         </div>
+                        <button className="button is-black">Update</button>
                         </div>
                     </form>
                 )
