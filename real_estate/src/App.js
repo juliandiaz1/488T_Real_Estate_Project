@@ -11,7 +11,7 @@ import './styles/Navbar.css';
 import UserForm from "./pages/UserForm";
 import axios from "axios";
 import SavedListing from "./pages/SavedListing";
-import User from "./components/User";
+import Graphs from "./pages/Graphs";
 
 const axiosInstance = axios.create({
   
@@ -80,6 +80,7 @@ export default function App() {
                     <Link className="navbar-item" id="houseslink" to={loginStatus ? "/houses" : "/login"}>Houses</Link>
                     <Link className="navbar-item" id="aboutlink" to="/about">About</Link>
                     <Link className="navbar-item" id="accountlink" to={loginStatus ? "/account" : "/login"}>Account</Link>
+                    <Link className="navbar-item" id="aboutlink" to="/graphs">Graphs</Link>
                     <div className="nav-dot"></div>
                     
                 </div>
@@ -103,6 +104,7 @@ export default function App() {
             </Route>
             <Route path="/houses" element={<Houses />}/>
             <Route path="/about" element={<About />}/>
+            <Route path="/graphs" element={<Graphs />}/>
             <Route path="/signup" element={<SignUp />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/userform" element={<UserForm />}/>

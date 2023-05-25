@@ -193,7 +193,8 @@ app.post("/api/images", upload.single('image'), (req, res) => {
       console.log("No file upload");
   } else {
     let id = req.cookies['user_id'];
-    var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
+    var imgsrc = process.env.REACT_APP_AXIOS_URL + '/images/' + req.file.filename
+    console.log(imgsrc);
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
         if (err) throw err
@@ -203,6 +204,31 @@ app.post("/api/images", upload.single('image'), (req, res) => {
     });
   }
 });
+
+app.post("/api/graphs", (req, res) => {
+  let username = req.cookies['user_name'];
+  const pythonProcess = spawn('python3', ['src/server/graph.py', req.body.state, req.body.min, req.body.max, req.body.beds]);
+    var d = '';
+    var e = '';
+
+    pythonProcess.stdout.on('data', data => {
+      d += data;
+    });
+
+    pythonProcess.stderr.on('data', data => {
+      e += data;
+    });
+
+    pythonProcess.on('close', code => {
+    res.json({ data: d, error: e });
+      
+    });
+})
+
+
+
+/************************** GET Statements***************************/
+
 
 app.get('/api/saved_listings', (req, res) => {
 
@@ -222,9 +248,6 @@ app.get('/api/saved_listings', (req, res) => {
 
 })
 
-
-
-/************************** GET Statements***************************/
 
 app.get('/api/return_listings', (req, res) => {
   
