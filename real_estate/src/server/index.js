@@ -194,12 +194,12 @@ app.post("/api/images", upload.single('image'), (req, res) => {
   } else {
     let id = req.cookies['user_id'];
     var imgsrc = process.env.REACT_APP_AXIOS_URL + '/images/' + req.file.filename
-    console.log(imgsrc);
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
         if (err) throw err
         if(result.length > 0){
-          console.log("File uploaded.");
+          console.log("File uploaded!");
+          res.send("Picture was uploaded!");
         }
     });
   }

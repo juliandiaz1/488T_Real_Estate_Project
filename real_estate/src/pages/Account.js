@@ -54,12 +54,16 @@ export default function Account(){
                     'Content-Type' : 'multipart/form-data'
                 }
 
-            }).then(window.location="/account");
+            }).then(e => {console.log(e); redirect()});
             
-        }catch{
-
+        }catch(error){
+            console.log(error);
         }
         
+      }
+
+      const redirect = () => {
+        window.location = "/account";
       }
       
 

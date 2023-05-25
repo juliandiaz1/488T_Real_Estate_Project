@@ -53,7 +53,7 @@ export default function Graph(props) {
                     layout={ {
                         width: 1200, 
                         height: 540, 
-                        title: 'Price Data', 
+                        title: 'Price Data for ' + props.filters.state, 
                         xaxis: {
                                 title: {
                                 text: 'Price',
