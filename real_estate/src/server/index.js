@@ -193,9 +193,9 @@ app.post('/api/delete_listing', (req, res) => {
     if(err){console.log(err)};
     if(rows.length > 0){
       db.query(query, [id, req.body.zpid], (err, rows) => {
-        if (rows.length > 0){
-          res.send("Deleted");
-        }
+        if(err){throw err}
+        res.send("Deleted");
+        
       });
 
     }
@@ -222,10 +222,7 @@ app.post("/api/images", upload.single('image'), (req, res) => {
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
         if (err){throw err}
-        if(result.length > 0){
-          console.log("File uploaded!");
-          res.send("Picture was uploaded!");
-        }
+        res.send("Uploaded!");
     });
   }
 });
