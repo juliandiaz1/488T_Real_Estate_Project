@@ -27,6 +27,7 @@ export default function Listings(props) {
                         
                         return (
                             <div key={key} className="house-card">
+                                <button className="delete"></button>
                                 <div className="content">
                                     <img className="house-img" src={val.imgSrc}></img>
                                     <p>Price: {val.price}</p>
