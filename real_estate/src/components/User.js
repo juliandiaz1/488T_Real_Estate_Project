@@ -2,7 +2,9 @@ import React from "react";
 import '../styles/User.css';
 import {Link, Route, Routes, redirect} from "react-router-dom";
 import SavedListing from "../pages/SavedListing";
+import ROIspecs from "../pages/ROIspecs";
 import axios from "axios";
+
 
 const axiosInstance = axios.create({
   
@@ -52,7 +54,7 @@ export default function User(props){
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>
                                 <Link className="navbar-item" to={"/account/SavedListing"}>Saved Listings</Link>
-                                <Link className="navbar-item">ROI Information</Link>
+                                <Link className="navbar-item" to={"/account/ROIspecs"}>ROI Information</Link>
                             </div>
                         </nav>
                         <div className="field">
@@ -96,6 +98,7 @@ export default function User(props){
         <>
             <Routes>
                 <Route path="/SavedListing" element={<SavedListing />}></Route>
+                <Route path="/ROIspecs" element={<ROIspecs />}></Route>
             </Routes>
             {display_user(props)}
         </>
