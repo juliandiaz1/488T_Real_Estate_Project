@@ -1,11 +1,48 @@
 import React from "react";
 import '../styles/User.css';
-import {Link, Route, Routes} from "react-router-dom";
+import {Link, Route, Routes, redirect} from "react-router-dom";
 import SavedListing from "../pages/SavedListing";
 import ROIspecs from "../pages/ROIspecs";
+import axios from "axios";
 
+
+const axiosInstance = axios.create({
+  
+    baseURL: process.env.REACT_APP_AXIOS_URL,
+    withCredentials: true,
+  
+});
 
 export default function User(props){
+    
+    async function updateInfo(userInfo){
+        userInfo.preventDefault();
+        
+        var x = document.querySelectorAll('.input');
+        let fname = x[0].value;
+        let lname = x[1].value;
+        let email = x[2].value;
+        let phone_number = x[3].value
+        
+        await axiosInstance.post('/api/updateUserInfo', {
+            fname: fname,
+            lname: lname,
+            email: email,
+            phone: phone_number,
+        }).then(res => {
+            if(res.data === "Updated account info"){
+                redirectUser();
+            }
+            else{
+                alert("Unable to update account info at this time, sorry.")
+            }
+        });
+        
+    }
+
+    const redirectUser = () => {
+        window.location = "/account";
+    }
 
     const display_user = (props) => {
         let user = props.info;
@@ -43,7 +80,7 @@ export default function User(props){
                         <div className="control">
                             <input className="input" type="name" defaultValue={user.phone_number}></input>
                         </div>
-                        <button className="button is-black">Update</button>
+                        <button className="button is-black" onClick={updateInfo}>Update</button>
                         </div>
                     </form>
                 )

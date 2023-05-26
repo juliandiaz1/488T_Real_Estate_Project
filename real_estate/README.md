@@ -2,7 +2,7 @@ Dependecies to install:
 
 ## `cd real_estate`
 ## `npm i -D react-router-dom@latest`
-## `npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts multer`
+## `npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts multer react-plotly.js plotly.js`
 
 To Run
 

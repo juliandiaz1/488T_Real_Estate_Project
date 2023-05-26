@@ -7,9 +7,11 @@ export default function House(props) {
 
 
     const axiosInstance = axios.create({
-        baseURL: "http://localhost:3001",
-        withCredentials: true
-      });
+  
+        baseURL: process.env.REACT_APP_AXIOS_URL,
+        withCredentials: true,
+      
+    });
 
     async function add_listing(val){
         

@@ -4,6 +4,7 @@ import User from '../components/User';
 import '../styles/Account.css';
 import ProfilePic from '../images/user_profile_picture.jpeg';
 import Loader from "../components/Loader";
+
 const axiosInstance = axios.create({
   
     baseURL: process.env.REACT_APP_AXIOS_URL,
@@ -16,7 +17,6 @@ export default function Account(){
     const [userinfo, setUserInfo] = useState('');
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("");
-    const [ listing, setListing ] = useState('');
     const [profile, setProfile] = useState(ProfilePic);
     
     const display_info = async () => {
@@ -40,7 +40,7 @@ export default function Account(){
       };
 
     const postPhoto = async event => {
-        event.preventDefault()
+        event.preventDefault();
     
         // Send the file and description to the server
         const formData = new FormData();
@@ -54,12 +54,16 @@ export default function Account(){
                     'Content-Type' : 'multipart/form-data'
                 }
 
-            }).then(window.location="/account");
+            }).then(e => {console.log(e); redirect()});
             
-        }catch{
-
+        }catch(error){
+            console.log(error);
         }
         
+      }
+
+      const redirect = () => {
+        window.location = "/account";
       }
       
 

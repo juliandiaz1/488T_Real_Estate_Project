@@ -33,8 +33,6 @@ export default function Houses() {
             document.querySelector("#loader").style = "display: none;"; 
             document.querySelector('.house-cntr').style = "display: flex;";
         });
-        
-       
     }
     
 

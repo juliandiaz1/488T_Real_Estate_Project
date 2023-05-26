@@ -182,6 +182,31 @@ app.post('/api/add_listing', (req, res) => {
 
 });
 
+//THIS IS FOR THE DELETE
+app.post('/api/delete_listing', (req, res) => {
+  let id = req.cookies['user_id'];
+  const query = "DELETE FROM `RealEstate`.`listings` where id = ? AND zpid = ?";
+  const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
+
+  db.query(query2, [id], (err, rows) =>{
+
+    if(err){console.log(err)};
+    if(rows.length > 0){
+      db.query(query, [id, req.body.zpid], (err, rows) => {
+        if(err){throw err}
+        res.send("Deleted");
+        
+      });
+
+    }
+    else{
+      res.send("user not found!")
+    }
+  })
+
+});
+
+
 app.post('/api/listing_data', (req, res) => {
   listings = JSON.stringify(req.body);
   res.send("recieved data!");
@@ -193,16 +218,44 @@ app.post("/api/images", upload.single('image'), (req, res) => {
       console.log("No file upload");
   } else {
     let id = req.cookies['user_id'];
-    var imgsrc = 'http://127.0.0.1:3001/images/' + req.file.filename
+    var imgsrc = process.env.REACT_APP_AXIOS_URL + '/images/' + req.file.filename
     var insertData = "UPDATE `RealEstate`.`accounts` SET imgSrc = ? where id = ?";
     db.query(insertData, [imgsrc, id], (err, result) => {
-        if (err) throw err
-        if(result.length > 0){
-          console.log("File uploaded.");
-        }
+        if (err){throw err}
+        res.send("Uploaded!");
     });
   }
 });
+
+app.post('/api/updateUserInfo', (req, res) => {
+  
+  let id = req.cookies['user_id'];
+  const query2 = "SELECT * FROM RealEstate.accounts where id = ?";
+  const query3 = "UPDATE `RealEstate`.`accounts` SET fname = ?, lname = ?, email = ?, phone_number = ? WHERE id = ?";
+
+  db.query(query2, [id], (err, rows) =>{
+
+    if(err){console.log(err)};
+
+    if(rows.length > 0){
+
+      db.query(query3, [req.body.fname, req.body.lname, req.body.email, req.body.phone, id], (err, rows) => {
+        if (err) {console.log(err);}
+        res.send("Updated account info");
+      });
+
+    }
+
+  })
+
+})
+
+
+
+
+
+/************************** GET Statements***************************/
+
 
 app.get('/api/saved_listings', (req, res) => {
 
@@ -222,9 +275,6 @@ app.get('/api/saved_listings', (req, res) => {
 
 })
 
-
-
-/************************** GET Statements***************************/
 
 app.get('/api/return_listings', (req, res) => {
   

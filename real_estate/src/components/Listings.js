@@ -1,5 +1,5 @@
 import React from "react"
-
+import axios from "axios";
 import '../styles/House.css';
 
 export default function Listings(props) {
@@ -18,6 +18,34 @@ export default function Listings(props) {
             )
        }
 
+
+       const axiosInstance = axios.create({
+  
+        baseURL: process.env.REACT_APP_AXIOS_URL,
+        withCredentials: true,
+      
+    });
+
+    async function delete_listing(val){
+        
+        document.getElementById("loader").css = "display: block;";
+
+        await axiosInstance.post('/api/delete_listing', {
+
+            zpid: this.zpid,
+            
+            
+        }).then(e => {
+            console.log(e);
+            if(e.data === "Deleted"){
+                window.location = "/account/SavedListing";
+            }
+            else{
+                alert("Please Log in.");
+            }
+        })
+    }
+
         
         if(Object.keys(houses).length > 0){
             return(
@@ -27,7 +55,7 @@ export default function Listings(props) {
                         
                         return (
                             <div key={key} className="house-card">
-                                <button className="delete"></button>
+                                <button className="delete" onClick={delete_listing.bind(val)} value={key}></button>
                                 <div className="content">
                                     <img className="house-img" src={val.imgSrc}></img>
                                     <p>Price: {val.price}</p>
