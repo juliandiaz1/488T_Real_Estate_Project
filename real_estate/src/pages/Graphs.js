@@ -22,6 +22,7 @@ export default function Graphs() {
         await axiosInstance.post('/api/houses', {
             
             state: houseDatas.state,
+            zip: houseDatas.zipcode,
             
         }).then((e) => {get_listing()}).catch((err) => console.log(err));;
     }
@@ -37,7 +38,7 @@ export default function Graphs() {
 
     const chosen_state = () => {
         var x = document.getElementById("states");
-        document.querySelector("#loader").style = "display: block;";
+        document.querySelector("#loader").style = "display: flex;";
         document.querySelector('.main-cntr').style = "display: none;";
         if(!Object.is(x, null)){
             let state = x.options[x.selectedIndex].value;
@@ -47,11 +48,14 @@ export default function Graphs() {
             maxPrice = maxPrice.options[maxPrice.selectedIndex].getAttribute('value');
             var beds = document.getElementById('beds');
             beds = beds.options[beds.selectedIndex].getAttribute('value');
+            var zip = document.getElementById('zip');
+            zip = zip.value;
             let houseFilter = {
                 state: state,
                 min: minPrice,
                 max: maxPrice,
                 beds: beds,
+                zipcode: zip,
             }
             setHouseData(houseFilter);
             loadPython(houseFilter);
@@ -60,8 +64,10 @@ export default function Graphs() {
     }
 
   return(
+    <>
+    <Loader />
     <div className='main-cntr'>
-        <Loader />
+        
         <div className="filter-options">
             <StatesList />
             <div className="">
@@ -113,12 +119,18 @@ export default function Graphs() {
                     </div>
                 </div>
             </section>
+            <section className="hero">
+                     <div className="hero-body">
+                        <input className="input" id="zip" placeholder="Zip-code:"></input>
+                    </div>
+            </section>
             <button className="filter-submit" onClick={chosen_state}>Submit</button>
         </div>
         <div className='graph'>
             <Graph info={houses} filters={houseData}/>
         </div>
     </div>
+    </>
   )
 }
 
