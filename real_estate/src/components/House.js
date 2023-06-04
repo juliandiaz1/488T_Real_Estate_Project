@@ -53,44 +53,44 @@ export default function House(props) {
     const displayHouses = (props) => {
 
         
-
-        const houses = props.info;
         
-        
-        
-        if(Object.keys(houses).length > 0){
-            return(
-                Object.entries(houses).map(([key, val]) => {
-
-                    try{
-                        var price = Number(val.price.replace(/[$,]/g, ""));
-                        
-                        if((Number(props.filters.min) <= price && Number(props.filters.max) >= price) && props.filters.beds <= val.beds){
+        if(props.info !== undefined && props.info !== null && props.info !== ""){
+            let houses = props.info;
+            houses = JSON.parse(houses);
+            
+            if(Object.keys(houses).length > 0){
+                return(
+                    Object.entries(houses).map(([key, val]) => {
+                        try{
+                            var price = Number(val.price.replace(/[$,]/g, ""));
                             
-                        
-                            return (
-                                <div key={key} className="house-card">
-                                    <div className="content">
-                                        <img className="house-img" src={val.imgSrc}></img>
-                                        <p>Price: {val.price}</p>
-                                        <p>City: {val.hdpData.homeInfo.city}</p>
-                                        <p>State: {val.hdpData.homeInfo.state}</p>
-                                        <p>Zip-Code: {val.hdpData.homeInfo.zipcode}</p>
-                                        <p>Bedrooms: {val.beds}</p>
-                                        <button className="add-listing" onClick={add_listing.bind(val)} value={key}>add listing<div id="tick-mark" style={{display: "none"}}></div></button>
+                            if((Number(props.filters.min) <= price && Number(props.filters.max) >= price) && props.filters.beds <= val.beds){
+                                
+                            
+                                return (
+                                    <div key={key} className="house-card">
+                                        <div className="content">
+                                            <img className="house-img" src={val.imgSrc}></img>
+                                            <p>Price: {val.price}</p>
+                                            <p>City: {val.hdpData.homeInfo.city}</p>
+                                            <p>State: {val.hdpData.homeInfo.state}</p>
+                                            <p>Zip-Code: {val.hdpData.homeInfo.zipcode}</p>
+                                            <p>Bedrooms: {val.beds}</p>
+                                            <button className="add-listing" onClick={add_listing.bind(val)} value={key}>add listing<div id="tick-mark" style={{display: "none"}}></div></button>
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        } // end of filter checker
-                    }catch{
-                        console.log("Error getting a house with zpid: ", val.zpid);
-                    }
-                   
-                })
-            )
-        }else{
-            return(<h3>No Listings!</h3>)
-        }
+                                )
+                            } // end of filter checker
+                        }catch{
+                            console.log("Error getting a house with zpid: ", val.zpid);
+                        }
+                    
+                    })
+                )
+            }else{
+                return(<h3>No Listings!</h3>)
+            }
+    }
 
 
     }

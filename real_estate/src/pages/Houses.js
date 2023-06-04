@@ -18,10 +18,10 @@ export default function Houses() {
     const [houseData, setHouseData ] = useState('');
     
    const loadPython = async(houseDatas) => {
-    
         await axiosInstance.post('/api/houses', {
             
             state: houseDatas.state,
+            zip: houseDatas.zipcode,
             
         }).then((e) => {get_listing()}).catch((err) => console.log(err));;
     }
@@ -48,11 +48,15 @@ export default function Houses() {
             maxPrice = maxPrice.options[maxPrice.selectedIndex].getAttribute('value');
             var beds = document.getElementById('beds');
             beds = beds.options[beds.selectedIndex].getAttribute('value');
+            var zip = document.getElementById('zip');
+            zip = zip.value;
+            console.log(zip);
             let houseFilter = {
                 state: state,
                 min: minPrice,
                 max: maxPrice,
                 beds: beds,
+                zipcode: zip,
             }
            
             setHouseData(houseFilter);
@@ -117,6 +121,11 @@ export default function Houses() {
                                 <option value={4}>4+</option>
                             </select>
                         </div>
+                    </div>
+                </section>
+                <section className="hero">
+                     <div className="hero-body">
+                        <input className="input" id="zip" placeholder="Zip-code:"></input>
                     </div>
                 </section>
                 <button className="filter-submit" onClick={chosen_state}>Submit</button>

@@ -1,16 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const passport = require("passport")
+const passport = require("passport");
 const expressSession = require("express-session");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const db = require('./db');
-const multer = require('multer')
+const multer = require('multer');
 const path = require('path');
 const spawn = require('child_process').spawn;
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
+var zlib = require('zlib');
 
 
 /************************** Use Statements***************************/
@@ -18,7 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("./public"))
 app.use(expressSession({ secret: "mySecretKey", resave: false, saveUninitialized: false }));
-
 app.use(cors({
     origin: process.env.REACT_APP_BASE_URL,
     credentials: true,
@@ -208,8 +208,21 @@ app.post('/api/delete_listing', (req, res) => {
 
 
 app.post('/api/listing_data', (req, res) => {
-  listings = JSON.stringify(req.body);
-  res.send("recieved data!");
+    var gunzip = zlib.createGunzip();            
+    req.pipe(gunzip);
+    var buffer = "";
+    gunzip.on('data', function(data) {
+      // decompression chunk ready, add it to the buffer
+      buffer += data.toString();
+
+    }).on("end", function() {
+        listings = JSON.stringify(buffer);
+        res.send("Decompressed data!");
+
+    }).on("error", function(e) {
+        res.send("Could not decompress the data");
+        throw e;
+    })
 });
 
 
@@ -277,13 +290,13 @@ app.get('/api/saved_listings', (req, res) => {
 
 
 app.get('/api/return_listings', (req, res) => {
-  
+
   res.send(listings);
   
 })
 
 app.post('/api/houses', (req, res) => {
-  const pythonProcess = spawn('python3', ['src/server/script.py', req.body.state]);
+  const pythonProcess = spawn('python3', ['src/server/script.py', req.body.state, req.body.zip]);
     var d = '';
     var e = '';
 
