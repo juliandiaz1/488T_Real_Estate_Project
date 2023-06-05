@@ -54,7 +54,7 @@ export default function User(props){
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>
                                 <Link className="navbar-item" to={"/account/SavedListing"}>Saved Listings</Link>
-                                <Link className="navbar-item" to={"/account/ROIspecs"}>ROI Information</Link>
+                                <Link className="navbar-item" to={"/account/ROIspecs"}>Mortgage Calculator</Link>
                             </div>
                         </nav>
                         <div className="field">
