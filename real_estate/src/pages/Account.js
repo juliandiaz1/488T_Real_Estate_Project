@@ -65,10 +65,16 @@ export default function Account(){
       const redirect = () => {
         window.location = "/account";
       }
+
+      const show = () => {
+        document.querySelector(".box").style="display: block;";
+        document.querySelector("#User-box").style="display: block;";
+    }
       
 
       useEffect(() => {
         display_info();
+        show();
     }, []);
 
       

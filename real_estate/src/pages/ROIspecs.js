@@ -7,6 +7,23 @@ import "../styles/MortgageCalc.css";
 
 function ROIspecs() {
 
+    const hide = () => {
+        document.querySelector("#user-fields").style="display: none;";
+        document.querySelector("#User-box").style="display: none;";
+
+        var x = document.querySelector("#accountlink");
+        
+        x.addEventListener('onlick', function(){
+            window.location = '/account';
+        });
+    }
+
+    
+
+    useEffect(() => {
+        hide();
+    }, []);
+
     return (
     <form className="box" id="Mortgage-Calculator">
         <div className="field">

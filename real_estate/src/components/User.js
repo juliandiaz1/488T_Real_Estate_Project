@@ -40,9 +40,7 @@ export default function User(props){
         
     }
 
-    async function hide() {
-        document.querySelector(".user-fields").style="display: none;";
-    }
+   
 
     const redirectUser = () => {
         window.location = "/account";
@@ -57,7 +55,7 @@ export default function User(props){
                         <nav className="navbaruser is-transparent">
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>
-                                <Link className="navbar-item" onClick={hide} to={"/account/SavedListing"}>Saved Listings</Link>
+                                <Link className="navbar-item" to={"/account/SavedListing"}>Saved Listings</Link>
                                 <Link className="navbar-item" to={"/account/ROIspecs"}>Mortgage Calculator</Link>
                             </div>
                         </nav>
@@ -96,7 +94,7 @@ export default function User(props){
         
     }
 
-    console.count();
+    
 
     return(
         <>

@@ -32,9 +32,16 @@ function SavedListing(){
         await axiosInstance.get('/api/saved_listings').then(res => setListing(res.data));
       }
 
+      const hide = () => {
+        document.querySelector("#user-fields").style="display: none;";
+        document.querySelector("#User-box").style="display: none;";
+
+    }
+
       useEffect(() => {
         account_info();
         get_saved_listings();
+        hide();
     }, []);
 
 
