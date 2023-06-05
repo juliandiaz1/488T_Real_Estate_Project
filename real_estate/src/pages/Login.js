@@ -44,18 +44,22 @@ export default function Login() {
     }
 
     return(
+      <div className='main-auth-cntr'>
          <div className="register-cntr">
             <div className='register-card'>
-            <span className="login-state"></span>
-                <h1>LOGIN</h1>
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" onChange={e => setLoginUsername(e.target.value)} required></input>
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" onChange={e => setLoginPassword(e.target.value)} required></input>
-                <button onClick={login} className='btn'> LOGIN</button>
-                <a className='redirect-user' href="/signup"  onClick={() => window.location="/signup"}>Not already a user? Sign up here.</a>
+                  <span className="login-state"></span>
+                  <h1>LOGIN</h1>
+                  <label htmlFor="username">Username</label>
+                  <input type="text" name="username" onChange={e => setLoginUsername(e.target.value)} required></input>
+                  <label htmlFor="password">Password</label>
+                  <input type="password" name="password" onChange={e => setLoginPassword(e.target.value)} required></input>
+                  <button onClick={login} className='btn'> LOGIN</button>
+                  <a className='redirect-user' href="/signup"  onClick={() => window.location="/signup"}>Not already a user? Sign up here.</a>
+            </div>
+            <div className='register-card-image'>
             </div>
          </div>
+      </div>
     );
 }
 

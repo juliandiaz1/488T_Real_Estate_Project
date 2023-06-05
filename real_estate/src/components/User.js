@@ -49,7 +49,7 @@ export default function User(props){
         if(user !== "No user found"){
             if(Object.keys(user).length > 0){
                 return (
-                    <form className="box">
+                    <form className="box" id="user-fields">
                         <nav className="navbaruser is-transparent">
                             <div className="navbar-start">
                             <label className="navbar-item">User Information</label>

@@ -76,26 +76,23 @@ export default function Account(){
     
 
     return (
-        <div>
-            <Loader />
-    
-             <div className="account-cntr">
-             
-            <User info={userinfo} />
-                
+        <>
+        <Loader />
+            <div className="main">
+                <div className="account-cntr">
+                    <User info={userinfo} />
+                </div>
+                <div>
+                    <form className="box" id="User-box">
+                        <figure className="image" id="default-pic">
+                            <img className="is-rounded" src={profile} alt="Profile Picture"></img>
+                            <input filename={file} onChange={saveFile} type="file" accept="image/*"></input>
+                            <button onClick={postPhoto} className="button is-fullwidth">Upload photo</button>
+                        </figure>
+                    </form>
+                </div>
             </div>
-            <div>
-                <form className="box" id="User-box">
-                    <figure className="image" id="default-pic">
-                        <img className="is-rounded" src={profile} alt="Profile Picture"></img>
-                        <input filename={file} onChange={saveFile} type="file" accept="image/*"></input>
-                        <button onClick={postPhoto} className="button is-fullwidth">Upload photo</button>
-                    </figure>
-                </form>
-
-            </div>
-            
-       </div>
+        </>
     )
 }
 
