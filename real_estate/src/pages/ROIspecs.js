@@ -3,11 +3,12 @@ import axios from 'axios';
 import CurrencyInput from 'react-currency-input-field';
 import { useState } from "react";
 import { useEffect } from "react";
+import "../styles/MortgageCalc.css";
 
 function ROIspecs() {
 
     return (
-    <form className="box" id="Mortgage Calculator">
+    <form className="box" id="Mortgage-Calculator">
         <div className="field">
             <label className="label">Home Price</label>
             <div className="control">
