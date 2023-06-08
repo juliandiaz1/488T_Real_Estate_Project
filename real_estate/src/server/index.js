@@ -263,6 +263,55 @@ app.post('/api/updateUserInfo', (req, res) => {
 
 })
 
+app.post('/api/calculate_mortgage', (req, res) => {
+  let id = req.cookies['user_id'];
+  console.log(id);
+  var query = "SELECT email FROM `RealEstate`.`accounts` where id = ?";
+
+  db.query(query, [id], (err, rows) => {
+    if(err){console.log(err)}
+    if(rows.length > 0){
+      let email = rows[0].email;
+      const pythonProcess = spawn('python3', 
+      ['src/server/mortgage_calc.py', 
+      req.body.state, 
+      req.body.max, 
+      req.body.beds, 
+      req.body.baths, 
+      req.body.homePrice, 
+      req.body.downPayment, 
+      req.body.propertyTax,
+      req.body.insurancePrice,
+      req.body.loanYears,
+      req.body.interestRate,
+      email
+      ]);
+      var d = '';
+      var e = '';
+
+      pythonProcess.stdout.on('data', data => {
+        d += data;
+      });
+
+      pythonProcess.stderr.on('data', data => {
+        e += data;
+      });
+
+      pythonProcess.on('close', code => {
+      res.json({ data: d, error: e });
+        
+      });
+    }
+    else{
+      res.send("No email found");
+    }
+  });
+
+  
+
+});
+
+ 
 
 
 

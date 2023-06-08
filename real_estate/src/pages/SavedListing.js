@@ -22,7 +22,7 @@ function SavedListing(){
         await axiosInstance.get('/api/get_account').then(res => {
             const userinfo = res.data;
         
-            console.log(res.data);
+            
             setUserInfo(userinfo);
         });
     }

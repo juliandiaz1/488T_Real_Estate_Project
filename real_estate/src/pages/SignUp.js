@@ -70,7 +70,6 @@ export default function SignUp() {
 }
 
     const login = (res) => {
-        console.log(res);
         if(res['data'] === "User logged in"){
           window.location = "/userform";
         }

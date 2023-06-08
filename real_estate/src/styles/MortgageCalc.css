@@ -1,3 +1,7 @@
 #Mortgage-Calculator {
     left: 38rem;
 }
+.filter-options{
+    display: flex;
+    justify-content: space-evenly;
+}
