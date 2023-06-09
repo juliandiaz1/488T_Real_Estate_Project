@@ -1,3 +1,9 @@
+A user-friendly website that Property Owners and Real Estate Investors can use to filter properties and determine what ones will provide the best ROI. 
+
+Primary tech stack
+## `REACT Node.js Express.js Python`
+ 
+
 Dependecies to install:
  
 `cd real_estate`
@@ -20,9 +26,11 @@ open a new terminal
 ## `npm run server`
 
 
+## `DATABASE and BACKEND connection set up`
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+You will need your own MySQL database.
 Edit the .env file in the src folder, and fill in the fields:
+
 REACT_APP_AXIOS_URL : This is for the HTTP client to send requests to Express (e.g http://localhost:3001 Backend IP)
 REACT_APP_BASE_URL : This is for Express to allow the HTTP client to send requests (CORS) (e.g http://localhost:3000 Client IP)
 DB_HOST : This is the MySQL server host name
@@ -30,7 +38,5 @@ DB_USER : This is the MySQL user name for the DB
 DB_PASS : This is the MySQL assword for the DB
 DB : This is the DB name for the MySQL server
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
