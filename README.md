@@ -1,4 +1,4 @@
-A user-friendly website that Property Owners and Real Estate Investors can use to filter properties and determine what ones will provide the best ROI. 
+## A user-friendly website that Property Owners and Real Estate Investors can use to filter properties and determine what ones will provide the best ROI. 
 
 Primary tech stack
 ## `REACT Node.js Express.js Python`
