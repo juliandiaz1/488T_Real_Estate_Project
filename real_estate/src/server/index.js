@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("./public"))
 app.use(expressSession({ secret: "mySecretKey", resave: false, saveUninitialized: false }));
+
 app.use(cors({
     origin: process.env.REACT_APP_BASE_URL,
     credentials: true,
@@ -312,7 +313,43 @@ app.post('/api/calculate_mortgage', (req, res) => {
 });
 
  
+app.post('/api/deleteAccount', (req, res) => {
+  let id = req.body.user_id
+  var query1 = "DELETE FROM `RealEstate`.`accounts` where id = ?";
+  var query2 = "DELETE FROM `RealEstate`.`users` where id = ?";
+  var query3 = "DELETE FROM `RealEstate`.`listings` where id = ?";
+  var query = "SELECT * FROM `RealEstate`.`users` where id = ?";
 
+
+  db.query(query, [id], (err, rows) => {
+    if(err){console.log(err)}
+    
+    if(rows.length > 0){
+
+      db.query(query2, [id], (err, rows) => {
+        if(err){console.log(err);}
+        try{
+          db.query(query1, [id], (err, rows) => {
+            if(err){console.log(err);}
+          })
+          }catch(err){}
+
+        try{
+          db.query(query3, [id], (err, rows) => {
+            if(err){console.log(err);}
+          })
+
+        }catch(err){}
+        
+        res.send("Account Deleted");
+      })
+    }
+    else{
+      res.send("no user found.")
+    }
+  });
+
+})
 
 
 

@@ -34,7 +34,7 @@ export default function App() {
             var temp = cookieArr[i].split("=");
             if(temp[0] === " user_name" && temp[1].length > 0){
                 setLoginStatus(true);
-                setUserName(temp[1]); 
+                setUserName(temp[1]);
             }
         }
     }

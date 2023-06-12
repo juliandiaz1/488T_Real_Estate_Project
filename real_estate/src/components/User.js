@@ -31,7 +31,7 @@ export default function User(props){
             phone: phone_number,
         }).then(res => {
             if(res.data === "Updated account info"){
-                redirectUser();
+                redirectUser("Updated");
             }
             else{
                 alert("Unable to update account info at this time, sorry.")
@@ -40,10 +40,56 @@ export default function User(props){
         
     }
 
+    async function deleteAccount(event){
+        event.preventDefault();
+        let cookies = document.cookie;
+        let cookieArr = cookies.split(";");
+        let user_id = -1;
+        for(var i = 0; i < cookieArr.length; ++i){
+            var temp = cookieArr[i].split("=");
+            if(temp[0] === "user_id" && temp[1].length > 0){
+                user_id = temp[1];
+            }
+        }
+
+        if(user_id !== -1){
+            
+            await axiosInstance.post('/api/logout', {
+
+            }).then(res => {document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); })})
+
+            await axiosInstance.post('/api/deleteAccount', {
+                user_id: user_id,
+
+            }).then(res => {
+                if(res.data === "Account Deleted"){
+                    redirectUser("Deleted");
+                }
+                else{
+                    alert("Unable to update account info at this time, sorry.")
+                }
+            });
+        }
+        else{
+            alert("Somthing went wrong please refresh the page. Or try again later.")
+        }
+        
+    }
+
+    const handleLogout = () => {
+       
+        window.location = '/login';
+    }
+
    
 
-    const redirectUser = () => {
-        window.location = "/account";
+    const redirectUser = (state) => {
+        if(state === "Deleted"){
+            handleLogout()
+        }
+        else{
+            window.location = "/account"
+        }
     }
 
     const display_user = (props) => {
@@ -83,12 +129,13 @@ export default function User(props){
                             <input className="input" type="name" defaultValue={user.phone_number}></input>
                         </div>
                         <button className="button is-black" onClick={updateInfo}>Update</button>
+                        <button className="button is-gray" onClick={deleteAccount}>Delete Account</button>
                         </div>
                     </form>
                 )
             }
         }else{
-            return(<h1>Not logged in.</h1>)
+            window.location = "/userform";
         }
         
         

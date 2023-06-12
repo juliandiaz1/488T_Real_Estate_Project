@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import User from '../components/User';
 import Listings from "../components/Listings";
 import { useState } from "react";
 import { useEffect } from "react";
