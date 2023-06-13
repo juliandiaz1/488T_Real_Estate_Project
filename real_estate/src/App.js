@@ -61,6 +61,12 @@ export default function App() {
         
     }
 
+    const show = () => {
+        document.querySelector(".box").style="display: block;";
+        document.querySelector("#User-box").style="display: block;";
+        document.querySelector("#user-fields").style="display: block;"
+    }
+
     useEffect(() => {
         check_cookie();
     }, []);
@@ -79,7 +85,7 @@ export default function App() {
                     <Link className="navbar-item" id="homelink" to="/">Home</Link>
                     <Link className="navbar-item" id="houseslink" to={loginStatus ? "/houses" : "/login"}>Houses</Link>
                     <Link className="navbar-item" id="aboutlink" to="/about">About</Link>
-                    <Link className="navbar-item" id="accountlink" to={loginStatus ? "/account" : "/login"}>Account</Link>
+                    <Link className="navbar-item" id="accountlink" to={loginStatus ? "/account" : "/login"} onClick={show}>Account</Link>
                     <Link className="navbar-item" id="aboutlink" to="/graphs">Graphs</Link>
                     <div className="nav-dot"></div>
                     
