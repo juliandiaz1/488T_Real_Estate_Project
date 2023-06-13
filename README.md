@@ -30,7 +30,7 @@ open a new terminal
 ## `DATABASE and BACKEND connection set up`
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 You will need your own MySQL database. I've added the SQL tables structures in the root folder of this repo. Just import it into your environment.
-Edit the .env file in the src folder, and fill in the fields:
+Edit the .env file in the real_estate folder, and fill in the fields:
 
 REACT_APP_AXIOS_URL : This is for the HTTP client to send requests to Express (e.g http://localhost:3001 Backend IP)
 
