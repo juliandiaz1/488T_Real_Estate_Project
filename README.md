@@ -9,11 +9,12 @@ Dependecies to install:
 `cd real_estate`
 ## usually `npm install` will do the trick if not: 
 `npm i -D react-router-dom@latest`
+
 `npm i nodemon axios bcrypt cors express express-session cookie-parser mysql passport passport-local bulma react-scripts multer react-plotly.js plotly.js react-currency-input-field dotenv`
 
-##`Python dependencies`:
+## `Python dependencies`:
 
-##`pip install requests pandas python3-dotenv`
+`pip install requests pandas python3-dotenv`
 
 To Run
 
